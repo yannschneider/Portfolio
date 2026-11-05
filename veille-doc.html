@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Documentation veille — Yann Schneider</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Portfolio de Yann Schneider, étudiant en BTS SIO option SISR à EnsiTech Saint-Herblain.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="site-nav" aria-label="Navigation principale">
+  <div class="site-nav-inner">
+    <a class="nav-logo" href="index.html">Y<span>ann</span> Schneider</a>
+    <ul>
+      <li><a href="profil.html">Profil</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="competences.html">Compétences</a></li>
+      <li><a href="veille.html" aria-current="page">Veille</a></li>
+      <li><a href="cv.html">CV</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<section class="doc">
+  <a class="doc-back" href="veille.html">← Retour à la veille</a>
+  <div class="section-label">04 — Veille · Documentation technique</div>
+  <h1 class="section-title">Veille automatisée</h1>
+  <p class="section-lead">Comment la page Veille de ce portfolio se met à jour seule chaque matin à partir de flux RSS, sans serveur à administrer et sans coût.</p>
+
+  <nav class="doc-toc" aria-label="Sommaire de la documentation">
+    <a href="#contexte">1. Contexte</a>
+    <a href="#architecture">2. Architecture</a>
+    <a href="#prerequis">3. Prérequis</a>
+    <a href="#sources">4. Sources</a>
+    <a href="#script">5. Script</a>
+    <a href="#installation">6. Mise en place</a>
+    <a href="#tests">7. Tests</a>
+    <a href="#securite">8. Sécurité</a>
+    <a href="#maintenance">9. Maintenance</a>
+    <a href="#competences">10. Compétences</a>
+  </nav>
+
+  <article class="doc-body">
+
+  <h2 id="contexte">1. Contexte et objectifs</h2>
+  <p>La page Veille du portfolio se met à jour seule chaque matin à partir de flux RSS, sans serveur à administrer et sans coût. Cette réalisation s'inscrit dans le BTS SIO option SISR (EnsiTech Saint-Herblain, 2025–2027).</p>
+  <p><strong>Besoin.</strong> Le portfolio présente une veille sur deux thèmes : les matériels réseau et les cyberattaques en France. Mise à jour à la main, elle vieillit vite et le jury voit tout de suite une veille figée.</p>
+  <p><strong>Objectifs.</strong></p>
+  <ul>
+    <li>Afficher chaque jour les articles récents de sources fiables, triés par date.</li>
+    <li>Garder séparées l'actualité automatique et l'analyse personnelle (cartes « Mon analyse »).</li>
+    <li>Utiliser uniquement des outils gratuits : GitHub, GitHub Actions, GitHub Pages, Python.</li>
+    <li>Ne rien casser si une source ne répond pas.</li>
+  </ul>
+  <p><strong>Périmètre.</strong> Le script ne rédige aucune analyse : il collecte et met en forme. La synthèse reste un travail personnel, mis à jour à la main.</p>
+
+  <h2 id="architecture">2. Architecture de la solution</h2>
+  <p>La solution repose entièrement sur GitHub : une planification déclenche un script Python, qui réécrit la page et la republie. Aucun serveur n'est à installer ni à maintenir.</p>
+  <figure class="doc-figure">
+    <div class="nd-scroll">
+      <svg class="doc-svg" viewBox="0 0 760 340" role="img" aria-label="Chaque matin, GitHub Actions met la page Veille à jour sans intervention" font-family="Space Mono, monospace" font-size="12">
+        <defs>
+          <marker id="va" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8593a8"/></marker>
+        </defs>
+        <g fill="none" stroke="#8593a8" stroke-width="1.25">
+          <path d="M184 168H204" marker-end="url(#va)"/>
+          <path d="M368 168H388" marker-end="url(#va)"/>
+          <path d="M552 168H572" marker-end="url(#va)"/>
+          <path d="M470 96V140" marker-end="url(#va)"/>
+          <path d="M654 196V288H552" marker-end="url(#va)"/>
+          <path d="M388 288H368" marker-end="url(#va)"/>
+          <path d="M204 288H184" marker-end="url(#va)"/>
+        </g>
+        <g stroke="rgba(0,212,255,0.4)" stroke-width="1.25" fill="rgba(0,212,255,0.04)">
+          <rect x="360" y="40" width="220" height="56" rx="2"/>
+          <rect x="20" y="140" width="164" height="56" rx="2"/>
+          <rect x="204" y="140" width="164" height="56" rx="2"/>
+          <rect x="388" y="140" width="164" height="56" rx="2"/>
+          <rect x="572" y="140" width="164" height="56" rx="2"/>
+          <rect x="388" y="260" width="164" height="56" rx="2"/>
+          <rect x="204" y="260" width="164" height="56" rx="2"/>
+        </g>
+        <rect x="20" y="260" width="164" height="56" rx="2" fill="rgba(255,107,53,0.1)" stroke="#ff6b35" stroke-width="1.5"/>
+        <g text-anchor="middle">
+          <text x="470" y="64" fill="#00d4ff" font-weight="700">Flux RSS / Atom</text>
+          <text x="470" y="82" fill="#8593a8" font-size="10.5">CERT-FR, ZATAZ, IT-Connect…</text>
+          <text x="102" y="164" fill="#e2e8f0" font-weight="700">Planification</text>
+          <text x="102" y="182" fill="#8593a8" font-size="10.5">chaque jour à 6h23</text>
+          <text x="286" y="164" fill="#e2e8f0" font-weight="700">GitHub Actions</text>
+          <text x="286" y="182" fill="#8593a8" font-size="10.5">runner Ubuntu, Python</text>
+          <text x="470" y="164" fill="#00d4ff" font-weight="700">update_veille.py</text>
+          <text x="470" y="182" fill="#8593a8" font-size="10.5">filtre, trie, échappe</text>
+          <text x="654" y="164" fill="#e2e8f0" font-weight="700">veille.html</text>
+          <text x="654" y="182" fill="#8593a8" font-size="10.5">zone VEILLE-AUTO</text>
+          <text x="470" y="284" fill="#e2e8f0" font-weight="700">Dépôt GitHub</text>
+          <text x="470" y="302" fill="#8593a8" font-size="10.5">branche main</text>
+          <text x="286" y="284" fill="#e2e8f0" font-weight="700">GitHub Pages</text>
+          <text x="286" y="302" fill="#8593a8" font-size="10.5">publie le site</text>
+          <text x="102" y="284" fill="#ff6b35" font-weight="700">Visiteur / jury</text>
+          <text x="102" y="302" fill="#e2e8f0" font-size="10.5">page Veille à jour</text>
+        </g>
+        <text x="480" y="124" fill="#8593a8" font-size="10.5">lecture HTTPS</text>
+        <text x="644" y="248" fill="#8593a8" font-size="10.5" text-anchor="end">git commit + push</text>
+      </svg>
+    </div>
+    <figcaption>Architecture de la veille automatisée · 8 composants</figcaption>
+  </figure>
+  <p>Le dépôt GitHub sert à la fois de stockage du code, de moteur d'exécution (Actions) et d'hébergement (Pages). Les fichiers concernés : <code>scripts/update_veille.py</code>, <code>.github/workflows/veille.yml</code> et <code>veille.html</code>.</p>
+
+  <h2 id="prerequis">3. Prérequis et environnement</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Élément</th><th>Rôle</th><th>Version / coût</th></tr></thead>
+    <tbody>
+      <tr><td>Compte GitHub</td><td>Héberge le dépôt et exécute l'automatisation</td><td>Gratuit</td></tr>
+      <tr><td>Dépôt public</td><td>Contient le site, le script et le workflow</td><td>—</td></tr>
+      <tr><td>GitHub Pages</td><td>Publie le site à partir de la branche <code>main</code></td><td>Gratuit</td></tr>
+      <tr><td>GitHub Actions</td><td>Lance le script chaque jour (runner <code>ubuntu-latest</code>)</td><td>Gratuit pour un dépôt public</td></tr>
+      <tr><td>Python</td><td>Langage du script, bibliothèque standard uniquement</td><td>3.12</td></tr>
+      <tr><td>Éditeur de code</td><td>Modifier le script et les pages</td><td>VS Code ou autre</td></tr>
+    </tbody>
+  </table></div>
+  <p>Aucune bibliothèque externe n'est installée : <code>urllib</code>, <code>xml.etree</code>, <code>email.utils</code>, <code>html</code> et <code>re</code> suffisent. Cela évite toute dépendance à maintenir.</p>
+
+  <h2 id="sources">4. Choix des sources</h2>
+  <p>Les sources ont été retenues pour leur fiabilité, leur fréquence de publication et la disponibilité d'un flux RSS ou Atom public. Les sources généralistes passent par un filtre de mots-clés pour ne garder que le thème de l'onglet.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Thème</th><th>Source</th><th>Type</th><th>Filtre mots-clés</th></tr></thead>
+    <tbody>
+      <tr><td>Cybersécurité</td><td>CERT-FR — alertes</td><td>Autorité officielle (ANSSI)</td><td>Non</td></tr>
+      <tr><td>Cybersécurité</td><td>CERT-FR — actualités</td><td>Autorité officielle (ANSSI)</td><td>Non</td></tr>
+      <tr><td>Cybersécurité</td><td>ZATAZ</td><td>Média spécialisé français</td><td>Non</td></tr>
+      <tr><td>Cybersécurité</td><td>IT-Connect</td><td>Média technique français</td><td>Oui</td></tr>
+      <tr><td>Réseau</td><td>Le Monde Informatique — rubrique réseaux</td><td>Presse IT française</td><td>Non</td></tr>
+      <tr><td>Réseau</td><td>IT-Connect</td><td>Média technique français</td><td>Oui</td></tr>
+      <tr><td>Réseau</td><td>Network World</td><td>Presse IT anglophone</td><td>Oui</td></tr>
+    </tbody>
+  </table></div>
+  <p><strong>Critères de sélection des articles.</strong></p>
+  <ul>
+    <li>Publiés depuis moins de 45 jours.</li>
+    <li>3 articles au maximum par source, pour qu'une source très active n'occupe pas tout l'onglet.</li>
+    <li>6 articles au maximum par onglet, triés du plus récent au plus ancien.</li>
+    <li>Doublons supprimés (même lien publié par deux flux).</li>
+  </ul>
+  <p><strong>Mots-clés réseau</strong> (extrait) : réseau, Wi-Fi, routeur, switch, Cisco, Fortinet, pfSense, VLAN, SD-WAN, 5G, VPN, pare-feu, DNS, IPv6, BGP.</p>
+  <p><strong>Mots-clés cybersécurité</strong> (extrait) : cyber, vulnérabilité, CVE, ransomware, rançongiciel, phishing, fuite, faille, attaque, ANSSI, MFA.</p>
+
+  <h2 id="script">5. Fonctionnement du script <code>update_veille.py</code></h2>
+  <p>Le script lit chaque flux, garde les articles qui respectent les critères, puis réécrit uniquement la zone balisée de <code>veille.html</code>. Le reste de la page n'est jamais touché.</p>
+  <ol>
+    <li><strong>Téléchargement</strong> : <code>urllib.request</code> récupère chaque flux avec un délai maximal de 20 secondes. En cas d'erreur, la source est ignorée et un message s'affiche dans le journal.</li>
+    <li><strong>Analyse XML</strong> : <code>xml.etree.ElementTree</code> lit les deux formats existants, RSS 2.0 (balises <code>&lt;item&gt;</code>) et Atom (balises <code>&lt;entry&gt;</code>).</li>
+    <li><strong>Nettoyage</strong> : les balises HTML des résumés sont retirées et le texte est coupé à 220 caractères.</li>
+    <li><strong>Filtrage</strong> : âge maximal, mots-clés pour les sources marquées <code>filtre: True</code>, limite par source, doublons.</li>
+    <li><strong>Génération HTML</strong> : chaque article devient un élément de liste (source, date, titre cliquable, résumé). Tous les textes passent par <code>html.escape</code> avant d'être insérés.</li>
+    <li><strong>Remplacement</strong> : une expression régulière remplace le contenu situé entre les marqueurs de la page.</li>
+  </ol>
+  <p>Les marqueurs délimitent la zone que le script a le droit de modifier :</p>
+<pre><code>&lt;!-- VEILLE-AUTO:cyber:START --&gt;
+  ... contenu généré automatiquement ...
+&lt;!-- VEILLE-AUTO:cyber:END --&gt;</code></pre>
+  <p>La configuration se trouve en tête du script, ce qui permet d'ajouter une source sans toucher au reste du code :</p>
+<pre><code>SOURCES = {
+    "cyber": [
+        {"nom": "CERT-FR alertes",
+         "url": "https://www.cert.ssi.gouv.fr/alerte/feed/",
+         "filtre": False},
+        # ...
+    ],
+}
+MAX_ARTICLES = 6
+MAX_PAR_SOURCE = 3
+MAX_AGE_JOURS = 45</code></pre>
+  <p>Si aucun article n'est trouvé pour un thème, le bloc existant est conservé tel quel au lieu d'être vidé.</p>
+
+  <h2 id="installation">6. Procédure de mise en place</h2>
+  <p>La mise en place prend une quinzaine de minutes et ne se fait qu'une fois.</p>
+  <ol>
+    <li><strong>Créer le dépôt</strong> : sur GitHub, <em>New repository</em>, visibilité <em>Public</em>.</li>
+    <li><strong>Envoyer les fichiers</strong> : les pages HTML, <code>style.css</code>, <code>script.js</code>, <code>scripts/update_veille.py</code> et <code>.github/workflows/veille.yml</code>. Le dossier <code>.github</code> est caché sur la plupart des systèmes : vérifier qu'il est bien présent dans le dépôt.</li>
+    <li><strong>Activer GitHub Pages</strong> : <em>Settings → Pages</em>, source <em>Deploy from a branch</em>, branche <code>main</code>, dossier <code>/ (root)</code>.</li>
+    <li><strong>Autoriser l'écriture</strong> : <em>Settings → Actions → General → Workflow permissions</em>, cocher <em>Read and write permissions</em>. Sans ce réglage, l'Action ne peut pas enregistrer la page mise à jour.</li>
+    <li><strong>Premier lancement</strong> : onglet <em>Actions</em>, workflow « Mise à jour de la veille », bouton <em>Run workflow</em>.</li>
+    <li><strong>Vérifier</strong> : le journal liste le nombre d'articles par source, un commit « Veille : mise à jour automatique du … » apparaît, puis la page Veille du site affiche les articles une à deux minutes plus tard.</li>
+  </ol>
+  <p>Le workflow <code>veille.yml</code> se déclenche de deux façons :</p>
+<pre><code>on:
+  schedule:
+    - cron: "23 5 * * *"   # chaque jour à 5h23 UTC (6h23 à Paris en hiver)
+  workflow_dispatch:        # lancement manuel
+
+permissions:
+  contents: write          # nécessaire pour faire le commit</code></pre>
+  <p>La dernière étape du workflow ne fait un commit que si <code>veille.html</code> a réellement changé (<code>git diff --quiet</code>). L'historique du dépôt ne se remplit donc pas de commits vides.</p>
+
+  <h2 id="tests">7. Tests et validation</h2>
+  <p>Le script a d'abord été testé avec des flux d'essai, puis il doit être validé sur les vrais flux après le déploiement.</p>
+  <p><strong>Tests unitaires réalisés (flux d'essai).</strong></p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Cas testé</th><th>Résultat attendu</th><th>Résultat obtenu</th></tr></thead>
+    <tbody>
+      <tr><td>Flux RSS 2.0 valide</td><td>Article lu, date au format « 5 nov. 2026 »</td><td class="ok">Conforme</td></tr>
+      <tr><td>Flux Atom valide</td><td>Article lu avec son lien <code>href</code></td><td class="ok">Conforme</td></tr>
+      <tr><td>Article hors sujet dans une source filtrée</td><td>Article écarté</td><td class="ok">Conforme</td></tr>
+      <tr><td>Source injoignable</td><td>Source ignorée, les autres traitées, message dans le journal</td><td class="ok">Conforme</td></tr>
+      <tr><td>Résumé contenant du HTML</td><td>Balises retirées, texte lisible</td><td class="ok">Conforme</td></tr>
+      <tr><td>Caractère spécial dans un titre (<code>&amp;</code>)</td><td>Échappé en <code>&amp;amp;</code>, affiché correctement</td><td class="ok">Conforme</td></tr>
+    </tbody>
+  </table></div>
+  <p><strong>Tests à réaliser après déploiement.</strong></p>
+  <ul class="checklist">
+    <li>Lancement manuel du workflow : statut vert dans l'onglet <em>Actions</em></li>
+    <li>Au moins un article récupéré pour chacune des 7 sources (journal)</li>
+    <li>Commit automatique créé, puis page en ligne mise à jour</li>
+    <li>Second lancement le même jour sans nouvel article : aucun commit</li>
+    <li>Lancement planifié du lendemain matin effectué</li>
+    <li>Affichage correct sur téléphone</li>
+  </ul>
+
+  <h2 id="securite">8. Sécurité</h2>
+  <p>Le contenu des flux vient de sites tiers. Il est donc traité comme non fiable, et les droits de l'automatisation sont limités au strict nécessaire.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Risque</th><th>Mesure appliquée</th></tr></thead>
+    <tbody>
+      <tr><td>Injection de code (XSS) via un titre ou un résumé piégé</td><td>Balises HTML retirées, puis tout le texte échappé avec <code>html.escape</code> avant insertion</td></tr>
+      <tr><td>Lien malveillant (<code>javascript:</code>…)</td><td>Seuls les liens commençant par <code>http</code> sont conservés</td></tr>
+      <tr><td>Droits trop larges de l'Action</td><td>Permission limitée à <code>contents: write</code>, aucun secret ni mot de passe stocké</td></tr>
+      <tr><td>Modification de toute la page</td><td>Écriture limitée à la zone entre les marqueurs <code>VEILLE-AUTO</code></td></tr>
+      <tr><td>Ouverture d'un lien externe</td><td>Attributs <code>target="_blank"</code> et <code>rel="noopener"</code> sur chaque lien</td></tr>
+      <tr><td>Source compromise ou en panne</td><td>Une erreur sur une source n'interrompt pas les autres ; la source peut être retirée de la liste en une ligne</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 id="maintenance">9. Maintenance, dépannage et évolutions</h2>
+  <p><strong>Maintenance courante.</strong></p>
+  <ul>
+    <li>Chaque semaine, relire le fil et mettre à jour les cartes « Mon analyse » avec les sujets marquants.</li>
+    <li>Ajouter ou retirer une source : modifier la liste <code>SOURCES</code> en tête du script, puis relancer le workflow.</li>
+    <li>Ajuster les mots-clés si trop d'articles hors sujet passent le filtre, ou trop peu d'articles le traversent.</li>
+    <li>Ne jamais modifier à la main le contenu situé entre les marqueurs : il est écrasé au passage suivant.</li>
+  </ul>
+  <p><strong>Dépannage.</strong></p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Symptôme</th><th>Cause probable</th><th>Solution</th></tr></thead>
+    <tbody>
+      <tr><td>Workflow en rouge à l'étape « Publier »</td><td>Permission d'écriture absente</td><td><em>Settings → Actions → General</em>, cocher <em>Read and write permissions</em></td></tr>
+      <tr><td>Une source affiche 0 article</td><td>Flux déplacé, en panne ou filtre trop strict</td><td>Ouvrir l'URL du flux dans un navigateur, la corriger ou retirer la source</td></tr>
+      <tr><td>Message « Marqueurs introuvables »</td><td>Marqueurs supprimés de <code>veille.html</code></td><td>Remettre les deux lignes <code>VEILLE-AUTO</code> de l'onglet concerné</td></tr>
+      <tr><td>Plus aucune mise à jour automatique</td><td>Planification suspendue par GitHub après une longue inactivité du dépôt</td><td>Onglet <em>Actions</em>, réactiver le workflow</td></tr>
+      <tr><td>Page en ligne inchangée malgré le commit</td><td>Publication GitHub Pages en cours ou en échec</td><td>Vérifier le déploiement <em>pages-build-deployment</em> dans <em>Actions</em></td></tr>
+    </tbody>
+  </table></div>
+  <p><strong>Évolutions possibles.</strong></p>
+  <ul>
+    <li>Ajouter un troisième onglet (par exemple Linux / systèmes, avec LWN.net ou Phoronix).</li>
+    <li>Archiver chaque mois les articles dans un fichier pour garder un historique de la veille.</li>
+    <li>Remplacer les sources par l'export OPML d'un agrégateur auto-hébergé comme FreshRSS.</li>
+  </ul>
+
+  <h2 id="competences">10. Compétences du référentiel mobilisées</h2>
+  <p>Cette réalisation relève du bloc 1 du BTS SIO, « Support et mise à disposition de services informatiques ».</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Compétence du bloc 1</th><th>Mise en œuvre dans le projet</th></tr></thead>
+    <tbody>
+      <tr><td>Organiser son développement professionnel</td><td>Mise en place d'une veille technologique structurée sur le réseau et la cybersécurité</td></tr>
+      <tr><td>Développer la présence en ligne de l'organisation</td><td>Publication et mise à jour automatique d'un site sur GitHub Pages</td></tr>
+      <tr><td>Mettre à disposition des utilisateurs un service informatique</td><td>Service de veille accessible en ligne, testé et documenté</td></tr>
+      <tr><td>Travailler en mode projet</td><td>Analyse du besoin, choix techniques, tests, documentation</td></tr>
+      <tr><td>Gérer le patrimoine informatique</td><td>Gestion des versions du site avec Git, configuration centralisée des sources</td></tr>
+    </tbody>
+  </table></div>
+  </article>
+
+  <nav class="page-nav" aria-label="Pages voisines">
+    <a class="prev" href="veille.html"><small>← Précédent</small><span>Veille</span></a>
+    <a class="next" href="cv.html"><small>Suivant →</small><span>CV</span></a>
+  </nav>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-brand">YS.</div>
+    <div class="footer-copy">© 2026 Yann Schneider — Portfolio BTS SIO SISR</div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

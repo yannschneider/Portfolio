@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Veille informatique — Yann Schneider</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Portfolio de Yann Schneider, étudiant en BTS SIO option SISR à EnsiTech Saint-Herblain.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="site-nav" aria-label="Navigation principale">
+  <div class="site-nav-inner">
+    <a class="nav-logo" href="index.html">Y<span>ann</span> Schneider</a>
+    <ul>
+      <li><a href="profil.html">Profil</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="competences.html">Compétences</a></li>
+      <li><a href="veille.html" aria-current="page">Veille</a></li>
+      <li><a href="cv.html">CV</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<section>
+  <div class="section-label">04 — Veille technologique</div>
+  <h1 class="section-title">Veille informatique</h1>
+
+  <a class="doc-callout fade-in" href="veille-doc.html">
+    <span class="doc-callout-tag">Documentation technique</span>
+    <span class="doc-callout-title">Comment cette veille se met à jour toute seule</span>
+    <span class="doc-callout-desc">Architecture GitHub Actions + Python, sources RSS, procédure de mise en place, tests et sécurité.</span>
+    <span class="doc-callout-go">Lire la documentation →</span>
+  </a>
+  <div class="veille-tabs fade-in" role="tablist">
+    <button class="veille-tab" id="t-reseau" role="tab" aria-selected="true" aria-controls="tab-reseau">🌐 Matériels Réseaux</button>
+    <button class="veille-tab" id="t-cyber" role="tab" aria-selected="false" aria-controls="tab-cyber">🛡️ Cyberattaques France</button>
+  </div>
+
+  <div id="tab-reseau" class="veille-panel fade-in d1" role="tabpanel" aria-labelledby="t-reseau">
+    <div class="veille-intro">
+      <strong>Veille matérielle réseau — Avril 2026.</strong> Cette veille porte sur les nouvelles technologies et équipements réseau qui façonnent l'infrastructure IT d'aujourd'hui : Wi-Fi 7, switches IA, routeurs haute performance. Sources : constructeurs, presse spécialisée, documentation technique.
+    </div>
+    <div class="veille-feed">
+      <div class="veille-feed-head">
+        <h2 class="veille-feed-title">Actualités récentes</h2>
+        <span class="veille-feed-meta">Mise à jour automatique chaque matin</span>
+      </div>
+<!-- VEILLE-AUTO:reseau:START -->
+      <p class="veille-feed-empty">Le fil réseau se remplit au premier passage de la mise à jour automatique.</p>
+<!-- VEILLE-AUTO:reseau:END -->
+    </div>
+    <h2 class="veille-analyse-title">Mon analyse</h2>
+    <div class="veille-summary">
+      <div class="summary-box"><div class="summary-num c-accent">Wi-Fi 7</div><div class="summary-label">Nouveau standard dominant</div></div>
+      <div class="summary-box"><div class="summary-num c-yellow">Wi-Fi 8</div><div class="summary-label">En développement (2028)</div></div>
+      <div class="summary-box"><div class="summary-num c-violet">AIOps</div><div class="summary-label">Réseau piloté par l'IA</div></div>
+    </div>
+    <div class="veille-grid">
+      <article class="veille-card">
+        <div class="veille-card-top"><span class="veille-badge badge-new">Nouveau standard</span><span class="veille-card-date">Avril 2026</span></div>
+        <h2 class="veille-card-title">Wi-Fi 7 (802.11be) : le nouveau standard grand public</h2>
+        <p class="veille-card-body">
+          Le Wi-Fi 7 s'est imposé en 2026 comme la nouvelle norme pour les équipements haut de gamme. Il introduit des innovations clés : <strong>Multi-Link Operation (MLO)</strong> permettant de se connecter simultanément sur plusieurs bandes (5 GHz et 6 GHz), des <strong>canaux de 320 MHz</strong> (le double du Wi-Fi 6) et la modulation <strong>4K-QAM</strong> (+20 % d'efficacité spectrale). La latence peut être réduite de 75 à 80 % par rapport au Wi-Fi 6 dans les environnements denses. Des routeurs Wi-Fi 7 sont désormais disponibles à partir de 100 €. En France, la <strong>Freebox Ultra de Free</strong> a été parmi les premières box à intégrer ce standard. La recommandation actuelle : tout achat d'un nouveau routeur en 2026 devrait se porter sur le Wi-Fi 7.
+        </p>
+        <div class="veille-card-footer">
+          <span class="veille-stat"><span class="veille-stat-dot"></span>46 Gbps débit théorique</span>
+          <span class="veille-stat"><span class="veille-stat-dot"></span>Latence 2–4 ms (MLO)</span>
+          <span class="veille-stat"><span class="veille-stat-dot"></span>Canaux 320 MHz</span>
+        </div>
+      </article>
+      <article class="veille-card">
+        <div class="veille-card-top"><span class="veille-badge badge-trend">À surveiller</span><span class="veille-card-date">Janvier 2026 — CES</span></div>
+        <h2 class="veille-card-title">Wi-Fi 8 (802.11bn) : premiers prototypes au CES 2026</h2>
+        <p class="veille-card-body">
+          Au CES 2026, <strong>MediaTek, Broadcom et ASUS</strong> ont dévoilé les premières puces et routeurs conceptuels Wi-Fi 8. La norme IEEE 802.11bn ne sera pas finalisée avant 2028, mais les fabricants préparent déjà des produits basés sur la version préliminaire. Contrairement au Wi-Fi 7, le Wi-Fi 8 ne mise pas sur des débits plus élevés mais sur une <strong>meilleure efficacité énergétique</strong>, une fiabilité accrue et une latence P99 divisée par six. Le routeur conceptuel ASUS <strong>ROG NeoCore</strong> illustre cette nouvelle direction. La recommandation actuelle reste le Wi-Fi 7 pour tout achat immédiat.
+        </p>
+        <div class="veille-card-footer">
+          <span class="veille-stat"><span class="veille-stat-dot yellow"></span>Finalisation IEEE : 2028</span>
+          <span class="veille-stat"><span class="veille-stat-dot yellow"></span>Focus fiabilité &amp; énergie</span>
+        </div>
+      </article>
+      <article class="veille-card">
+        <div class="veille-card-top"><span class="veille-badge badge-info">Marché entreprise</span><span class="veille-card-date">Décembre 2025</span></div>
+        <h2 class="veille-card-title">HPE rachète Juniper : nouveau géant des réseaux d'entreprise</h2>
+        <p class="veille-card-body">
+          Le rachat de <strong>Juniper Networks par HPE pour 14 milliards de dollars</strong> a été finalisé mi-2025. L'entité combinée HPE-Juniper défie désormais Cisco et Huawei sur le marché des switches de campus. HPE a lancé de nouveaux équipements : le switch <strong>QFX5250</strong> (premier à utiliser le silicium Broadcom Tomahawk 6), le routeur edge <strong>MX301</strong> (1,6 Tbps, 1RU) et les routeurs cœur <strong>PTX12000</strong> pour l'IA. Ces équipements sont pilotés via les plateformes <strong>AIOps</strong> Aruba Central et Juniper Mist, vers une vision de réseau «&nbsp;auto-pilotés&nbsp;».
+        </p>
+        <div class="veille-card-footer">
+          <span class="veille-stat"><span class="veille-stat-dot"></span>Switch QFX5250 — Tomahawk 6</span>
+          <span class="veille-stat"><span class="veille-stat-dot"></span>Routeur MX301 — 1,6 Tbps</span>
+        </div>
+      </article>
+      <article class="veille-card">
+        <div class="veille-card-top"><span class="veille-badge badge-new">Tendance 2026</span><span class="veille-card-date">2025–2026</span></div>
+        <h2 class="veille-card-title">Réseau mesh Wi-Fi 7 : la solution pour les grandes surfaces</h2>
+        <p class="veille-card-body">
+          Les systèmes mesh Wi-Fi 7 deviennent la référence pour couvrir de grandes surfaces (bureaux, hôpitaux, établissements scolaires). Les modèles phares incluent le <strong>TP-Link Deco BE85</strong> (jusqu'à 19 000 Mbit/s théoriques), le <strong>Netgear Orbi Wi-Fi 7</strong> et l'<strong>eero Max 7</strong> (port Ethernet 10 Gb/s, 230 m², 250 appareils). Ces systèmes offrent une itinérance transparente grâce au MLO et à l'IA de routage. La convergence Wi-Fi 7 + ports <strong>2,5 Gb/s ou 10 Gb/s</strong> est désormais standard sur les modèles professionnels.
+        </p>
+        <div class="veille-card-footer">
+          <span class="veille-stat"><span class="veille-stat-dot"></span>TP-Link Deco BE85</span>
+          <span class="veille-stat"><span class="veille-stat-dot"></span>Netgear Orbi Wi-Fi 7</span>
+          <span class="veille-stat"><span class="veille-stat-dot"></span>eero Max 7</span>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div id="tab-cyber" class="veille-panel" role="tabpanel" aria-labelledby="t-cyber" hidden>
+    <div class="veille-intro">
+      <strong>Veille cybersécurité France — 2025/2026.</strong> La France fait face à une vague sans précédent de cyberattaques. Ce tableau de bord présente les incidents majeurs, les secteurs les plus touchés et les tendances observées. Sources : ANSSI, ZATAZ, rm3a.fr, presse spécialisée.
+    </div>
+    <div class="veille-feed">
+      <div class="veille-feed-head">
+        <h2 class="veille-feed-title">Actualités récentes</h2>
+        <span class="veille-feed-meta">Mise à jour automatique chaque matin</span>
+      </div>
+<!-- VEILLE-AUTO:cyber:START -->
+      <p class="veille-feed-empty">Le fil cybersécurité se remplit au premier passage de la mise à jour automatique.</p>
+<!-- VEILLE-AUTO:cyber:END -->
+    </div>
+    <h2 class="veille-analyse-title">Mon analyse</h2>
+    <div class="veille-summary">
+      <div class="summary-box"><div class="summary-num c-red">44,9M</div><div class="summary-label">Personnes touchées 2024–2025</div></div>
+      <div class="summary-box"><div class="summary-num c-yellow">60%</div><div class="summary-label">Attaques débutent par phishing</div></div>
+      <div class="summary-box"><div class="summary-num c-red">4/jour</div><div class="summary-label">Tentatives d'intrusion hôpitaux</div></div>
+    </div>
+    <div class="veille-grid">
+      <article class="veille-card">
+        <div class="veille-card-top"><span class="veille-badge badge-critical">Critique</span><span class="veille-card-date">Fév. 2025</span></div>
+        <h2 class="veille-card-title">Viamedis &amp; Almerys : 33 millions de Français exposés</h2>
+        <p class="veille-card-body">
+          Les deux opérateurs de tiers payant <strong>Viamedis et Almerys</strong> ont subi une intrusion majeure exposant les données de santé de <strong>33 millions de Français</strong>. Numéros de sécurité sociale, états civils et informations d'assurance ont été compromis. Il s'agit de l'une des plus grandes fuites de données médicales de l'histoire française. La méthode : exploitation de comptes partenaires compromis, absence de MFA. Cet incident illustre le risque des <strong>prestataires tiers</strong> comme vecteur d'attaque.
+        </p>
+        <div class="veille-card-footer">
+          <span class="veille-stat"><span class="veille-stat-dot red"></span>33M personnes touchées</span>
+          <span class="veille-stat"><span class="veille-stat-dot red"></span>Données de santé</span>
+          <span class="veille-stat"><span class="veille-stat-dot red"></span>Sans MFA</span>
+        </div>
+      </article>
+      <article class="veille-card">
+        <div class="veille-card-top"><span class="veille-badge badge-alert">Ransomware</span><span class="veille-card-date">Jan. 2026</span></div>
+        <h2 class="veille-card-title">CHU de Lille : 12 jours en mode dégradé</h2>
+        <p class="veille-card-body">
+          En janvier 2026, le <strong>CHU de Lille</strong> a subi une cyberattaque par ransomware le contraignant à fonctionner en mode dégradé pendant <strong>12 jours</strong>, avec plus de <strong>200 interventions chirurgicales reportées</strong>. Les hôpitaux et cliniques français subissent en moyenne <strong>4 tentatives d'intrusion par jour</strong>. Le secteur de la santé occupe la première place des secteurs les plus attaqués en 2026 selon l'ANSSI. En mars 2026, Cerballiance (700 laboratoires) a également subi un accès non autorisé exposant états civils, résultats d'analyses et numéros de sécurité sociale de ses patients.
+        </p>
+        <div class="veille-card-footer">
+          <span class="veille-stat"><span class="veille-stat-dot red"></span>200+ opérations reportées</span>
+          <span class="veille-stat"><span class="veille-stat-dot red"></span>Ransomware</span>
+        </div>
+      </article>
+      <article class="veille-card">
+        <div class="veille-card-top"><span class="veille-badge badge-alert">Série d'incidents</span><span class="veille-card-date">Juil.–Déc. 2025</span></div>
+        <h2 class="veille-card-title">France Travail : trois incidents en quelques mois</h2>
+        <p class="veille-card-body">
+          L'ancien Pôle emploi <strong>France Travail</strong> a enchaîné trois cyberincidents majeurs : <strong>340 000 demandeurs d'emploi</strong> compromis via Kairos en juillet, <strong>31 000 comptes</strong> piratés par le groupe Stormous à l'automne, puis <strong>1,6 million de jeunes</strong> exposés via les Missions Locales en décembre 2025. Ces attaques successives soulignent les vulnérabilités des systèmes d'information des services publics et l'absence de MFA généralisée malgré les alertes répétées de l'ANSSI depuis 2023.
+        </p>
+        <div class="veille-card-footer">
+          <span class="veille-stat"><span class="veille-stat-dot red"></span>+1,97M personnes touchées</span>
+          <span class="veille-stat"><span class="veille-stat-dot yellow"></span>Service public</span>
+        </div>
+      </article>
+      <article class="veille-card">
+        <div class="veille-card-top"><span class="veille-badge badge-trend">Tendance 2025–2026</span><span class="veille-card-date">Analyse ANSSI / ZATAZ</span></div>
+        <h2 class="veille-card-title">Ransomware : concentration sur moins de groupes, plus dangereux</h2>
+        <p class="veille-card-body">
+          Selon l'analyse ZATAZ, le paysage du ransomware se concentre autour de quelques groupes dominants : <strong>Qilin, Akira, Play, Incransom et Lynx</strong>. En novembre 2025, le groupe <strong>Clop</strong> a revendiqué à lui seul 334 attaques en un mois. Les cibles françaises incluent des entreprises, collectivités et hôpitaux (Atalian, France Hôpital, lycées Hauts-de-France...). Tendance majeure : les attaquants abandonnent le simple chiffrement au profit de l'<strong>exfiltration de données</strong> suivie de menaces de divulgation, plus efficace face aux entreprises dotées de sauvegardes.
+        </p>
+        <div class="veille-card-footer">
+          <span class="veille-stat"><span class="veille-stat-dot red"></span>Qilin, Akira, Clop actifs</span>
+          <span class="veille-stat"><span class="veille-stat-dot yellow"></span>Exfiltration &gt; Chiffrement</span>
+        </div>
+      </article>
+      <article class="veille-card">
+        <div class="veille-card-top"><span class="veille-badge badge-alert">Collectivités</span><span class="veille-card-date">2026</span></div>
+        <h2 class="veille-card-title">Collectivités : 320+ victimes, budgets IT insuffisants</h2>
+        <p class="veille-card-body">
+          Les collectivités locales (mairies, conseils départementaux) constituent la <strong>deuxième cible la plus touchée</strong> en France. Plus de <strong>320 collectivités</strong> ont été victimes de cyberattaques significatives depuis début 2026. Le scénario type : un mail de phishing ciblé sur un agent, installation d'un ransomware, rançon entre 50 000 et 500 000 €. Facteurs aggravants : budgets IT sous-dimensionnés (<strong>77 % des collectivités dépensent moins de 2 000 €/an</strong> en cybersécurité) et équipes techniques réduites. Une commune sur dix déclare avoir été victime dans les 12 derniers mois.
+        </p>
+        <div class="veille-card-footer">
+          <span class="veille-stat"><span class="veille-stat-dot red"></span>320+ collectivités touchées</span>
+          <span class="veille-stat"><span class="veille-stat-dot yellow"></span>Budget cyber insuffisant</span>
+        </div>
+      </article>
+      <article class="veille-card">
+        <div class="veille-card-top"><span class="veille-badge badge-info">Réglementation</span><span class="veille-card-date">2026</span></div>
+        <h2 class="veille-card-title">NIS 2 &amp; Cyber Resilience Act : nouvelles obligations</h2>
+        <p class="veille-card-body">
+          La <strong>directive NIS 2</strong> est en cours de transposition en France. Elle durcit les exigences de cybersécurité et élargit le champ des structures concernées, avec des <strong>sanctions pénales pour les dirigeants</strong> en plus des amendes. Le <strong>Cyber Resilience Act (CRA)</strong>, applicable depuis septembre 2026, impose aux fournisseurs de produits numériques de signaler toute vulnérabilité activement exploitée. Rappel ANSSI : en 2025, environ <strong>29 % des vulnérabilités exploitées l'ont été le jour même de leur publication</strong> ou avant — ce qui impose une politique de mise à jour immédiate.
+        </p>
+        <div class="veille-card-footer">
+          <span class="veille-stat"><span class="veille-stat-dot"></span>NIS 2 — Sanctions pénales</span>
+          <span class="veille-stat"><span class="veille-stat-dot"></span>CRA — Sept. 2026</span>
+          <span class="veille-stat"><span class="veille-stat-dot yellow"></span>29% zero-day exploités</span>
+        </div>
+      </article>
+    </div>
+  </div>
+  <nav class="page-nav" aria-label="Pages voisines">
+    <a class="prev" href="competences.html"><small>← Précédent</small><span>Compétences</span></a>
+    <a class="next" href="cv.html"><small>Suivant →</small><span>CV</span></a>
+  </nav>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-brand">YS.</div>
+    <div class="footer-copy">© 2026 Yann Schneider — Portfolio BTS SIO SISR</div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

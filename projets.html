@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Projets — Yann Schneider</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Portfolio de Yann Schneider, étudiant en BTS SIO option SISR à EnsiTech Saint-Herblain.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="site-nav" aria-label="Navigation principale">
+  <div class="site-nav-inner">
+    <a class="nav-logo" href="index.html">Y<span>ann</span> Schneider</a>
+    <ul>
+      <li><a href="profil.html">Profil</a></li>
+      <li><a href="projets.html" aria-current="page">Projets</a></li>
+      <li><a href="competences.html">Compétences</a></li>
+      <li><a href="veille.html">Veille</a></li>
+      <li><a href="cv.html">CV</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<section>
+  <div class="section-label">02 — Réalisations</div>
+  <h1 class="section-title">Mes projets</h1>
+  <p class="section-lead">Quatre projets réalisés pendant le BTS SIO SISR, du pare-feu à la documentation réseau.</p>
+  <div class="projects-grid">
+
+    <article class="project-card wide fade-in d1">
+      <div class="project-num">PROJET 01 — Infrastructures &amp; Sécurité</div>
+      <div class="project-body-split">
+        <div>
+          <div class="project-icon">🛡️</div>
+          <h2 class="project-title">pfSense — Firewall &amp; VPN</h2>
+          <p class="project-subtitle">Configuration complète d'une passerelle sécurisée</p>
+          <p class="project-desc">
+            Mise en place d'un routeur/firewall pfSense dans un environnement de virtualisation. Configuration des règles de filtrage, des interfaces réseau et d'un tunnel VPN pour accès sécurisé à distance.
+          </p>
+          <div class="tags">
+            <span class="tag active">pfSense</span>
+            <span class="tag active">OpenVPN</span>
+            <span class="tag active">IPsec</span>
+            <span class="tag">Firewall</span>
+            <span class="tag">NAT</span>
+          </div>
+        </div>
+        <ul class="project-tasks">
+          <li>Installation et configuration initiale de pfSense sur VM</li>
+          <li>Configuration des interfaces WAN / LAN / DMZ</li>
+          <li>Mise en place des règles de firewall (politique deny-all, whitelist)</li>
+          <li>Création d'un tunnel VPN OpenVPN (certificats, utilisateurs)</li>
+          <li>Configuration VPN IPsec site-à-site</li>
+          <li>Paramétrage des règles NAT et port forwarding</li>
+          <li>Configuration DHCP et DNS Resolver</li>
+          <li>Supervision et monitoring du trafic réseau</li>
+          <li>Tests d'intrusion et validation des règles de sécurité</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="project-card fade-in d2">
+      <div class="project-num">PROJET 02 — Gestion SI</div>
+      <div class="project-icon orange">🖥️</div>
+      <h2 class="project-title">GLPI sur Debian</h2>
+      <p class="project-subtitle">Système de gestion de parc &amp; helpdesk</p>
+      <p class="project-desc">
+        Installation et configuration de GLPI (Gestionnaire Libre de Parc Informatique) sur un serveur Debian. Mise en place d'un outil complet de ticketing et d'inventaire pour la gestion du parc informatique.
+      </p>
+      <div class="tags">
+        <span class="tag active">GLPI</span>
+        <span class="tag active">Debian</span>
+        <span class="tag">Apache2</span>
+        <span class="tag">MariaDB</span>
+        <span class="tag">PHP</span>
+      </div>
+      <ul class="project-tasks">
+        <li>Installation Debian Server (CLI, sans interface graphique)</li>
+        <li>Configuration de la stack LAMP (Apache2, MariaDB, PHP)</li>
+        <li>Déploiement et configuration de GLPI</li>
+        <li>Création des profils utilisateurs et droits d'accès</li>
+        <li>Mise en place du module ticketing (helpdesk)</li>
+        <li>Configuration de l'inventaire automatique (agent FusionInventory)</li>
+      </ul>
+    </article>
+
+    <article class="project-card fade-in d2">
+      <div class="project-num">PROJET 03 — Architecture</div>
+      <div class="project-icon green">🌐</div>
+      <h2 class="project-title">Schéma de réseau</h2>
+      <p class="project-subtitle">Architecture et documentation réseau</p>
+      <p class="project-desc">
+        Conception et documentation d'une architecture réseau d'entreprise. Modélisation des équipements, des flux et des zones de sécurité.
+      </p>
+      <div class="tags">
+        <span class="tag active">Cisco Packet Tracer</span>
+        <span class="tag active">VLAN</span>
+        <span class="tag">Adressage IP</span>
+        <span class="tag">Documentation</span>
+      </div>
+      <ul class="project-tasks">
+        <li>Analyse des besoins et conception de l'architecture</li>
+        <li>Modélisation des équipements (routeurs, switchs, serveurs)</li>
+        <li>Plan d'adressage IP et segmentation VLAN</li>
+        <li>Définition des zones de sécurité (LAN, DMZ, WAN)</li>
+        <li>Documentation technique et schémas Visio/Draw.io</li>
+      </ul>
+    </article>
+
+    <article class="project-card wide fade-in d3">
+      <div class="project-num">PROJET 04 — Switching</div>
+      <div class="project-body-split">
+        <div>
+          <div class="project-icon blue">🔀</div>
+          <h2 class="project-title">Configuration Switch (pfSense)</h2>
+          <p class="project-subtitle">Gestion des VLANs et du switching</p>
+          <div class="tags">
+            <span class="tag active">VLAN</span>
+            <span class="tag active">Trunk</span>
+            <span class="tag active">pfSense</span>
+            <span class="tag">802.1Q</span>
+          </div>
+        </div>
+        <ul class="project-tasks">
+          <li>Configuration des VLANs (802.1Q) via pfSense</li>
+          <li>Mise en place des ports trunk et access sur les switchs managés</li>
+          <li>Inter-VLAN routing via pfSense (router-on-a-stick)</li>
+          <li>Règles de firewall par VLAN pour isolation des réseaux</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+
+  <nav class="page-nav" aria-label="Pages voisines">
+    <a class="prev" href="profil.html"><small>← Précédent</small><span>Profil</span></a>
+    <a class="next" href="competences.html"><small>Suivant →</small><span>Compétences</span></a>
+  </nav>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-brand">YS.</div>
+    <div class="footer-copy">© 2026 Yann Schneider — Portfolio BTS SIO SISR</div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
