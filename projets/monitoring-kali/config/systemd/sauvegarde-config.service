@@ -1,0 +1,6 @@
+[Unit]
+Description=Sauvegarde de la configuration de supervision
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/sauvegarde-config

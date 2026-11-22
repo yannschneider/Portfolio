@@ -1,0 +1,6 @@
+[Unit]
+Description=Metriques Suricata et arpwatch pour Prometheus
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/metriques-securite

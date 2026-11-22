@@ -1,0 +1,76 @@
+# Prometheus - VM kali-monitor
+global:
+  scrape_interval: 30s
+  evaluation_interval: 30s
+  external_labels:
+    site: maison
+    sonde: kali-monitor
+
+rule_files:
+  - /etc/prometheus/alertes.rules.yml
+
+scrape_configs:
+  - job_name: prometheus
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Etat de la sonde elle-meme (CPU, RAM, disque, reseau, services)
+  - job_name: sonde
+    static_configs:
+      - targets: ['localhost:9100']
+        labels: {nom: 'kali-monitor'}
+
+  # Disponibilite et latence des equipements (ping ICMP)
+  - job_name: ping
+    metrics_path: /probe
+    params:
+      module: [icmp]
+    file_sd_configs:
+      - files:
+          - /etc/prometheus/targets/infra.yml
+          - /etc/prometheus/targets/lan-hotes.yml
+        refresh_interval: 1m
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: localhost:9115
+
+  # Resolution DNS par la box
+  - job_name: dns
+    metrics_path: /probe
+    params:
+      module: [dns_box]
+    file_sd_configs:
+      - files: [/etc/prometheus/targets/infra.yml]
+    relabel_configs:
+      - source_labels: [role]
+        regex: passerelle
+        action: keep
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: localhost:9115
+
+  # Acces Web vers Internet (HTTP)
+  - job_name: web
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    static_configs:
+      - targets: ['https://www.kali.org', 'https://www.cert.ssi.gouv.fr']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: localhost:9115
+
+  - job_name: blackbox
+    static_configs:
+      - targets: ['localhost:9115']

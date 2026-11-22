@@ -30,7 +30,7 @@
 <section>
   <div class="section-label">02 — Réalisations</div>
   <h1 class="section-title">Mes projets</h1>
-  <p class="section-lead">Sept projets réalisés pendant le BTS SIO SISR, du pare-feu au domaine Active Directory, jusqu'à ma veille technologique automatisée et ma clé USB d'intervention. Chaque projet documenté est accompagné de sa documentation technique en PDF.</p>
+  <p class="section-lead">Huit projets réalisés pendant le BTS SIO SISR, du pare-feu au domaine Active Directory, jusqu'à ma veille technologique automatisée, ma clé USB d'intervention et ma sonde de supervision sous Kali Linux. Chaque projet documenté est accompagné de sa documentation technique en PDF.</p>
   <div class="projects-grid">
 
     <article id="projet-pfsense" class="project-card wide fade-in d1">
@@ -252,6 +252,45 @@
         </ul>
       </div>
       </article>
+
+    <article id="projet-monitoring" class="project-card wide fade-in d3">
+      <div class="project-num">PROJET 08 — Supervision &amp; Sécurité</div>
+      <div class="project-body-split">
+        <div>
+          <div class="project-icon green">📈</div>
+          <h2 class="project-title">Sonde de supervision sous Kali Linux</h2>
+          <p class="project-subtitle">Disponibilité, inventaire et détection d'intrusion du réseau local</p>
+          <p class="project-desc">
+            Sonde virtuelle construite à partir de l'ISO Kali Linux 2026.3 : installation entièrement automatisée, outils de Kali (nmap, tcpdump, Wireshark) complétés par Suricata, Prometheus, Grafana, darkstat, arpwatch et vnStat. Elle surveille la box, le DNS et Internet, inventorie les appareils, détecte les balayages et alerte en moins de trois minutes. Recette de 20 tests, tous validés.
+          </p>
+          <div class="tags">
+            <span class="tag active">Kali Linux</span>
+            <span class="tag active">Suricata</span>
+            <span class="tag active">Prometheus</span>
+            <span class="tag active">Grafana</span>
+            <span class="tag">nmap</span>
+            <span class="tag">nftables</span>
+            <span class="tag">VirtualBox</span>
+          </div>
+          <div class="project-docs">
+            <a class="doc-link" href="docs/monitoring-kali-installation.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Documentation d'installation — Sonde de supervision Kali</span><span class="doc-link-meta">24 pages</span></a>
+            <a class="doc-link" href="docs/monitoring-kali-guide-utilisateur.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Guide utilisateur — Surveiller son réseau avec la sonde</span><span class="doc-link-meta">13 pages</span></a>
+            <a class="doc-link" href="https://github.com/yannschneider/Portfolio/tree/main/projets/monitoring-kali" target="_blank" rel="noopener"><span class="doc-link-type web">CODE</span><span class="doc-link-name">Scripts et fichiers de configuration</span><span class="doc-link-meta">preseed · provisionnement · recette</span></a>
+          </div>
+        </div>
+        <ul class="project-tasks">
+          <li>Installation de Kali sans intervention par fichier preseed servi en HTTP, compte et clé SSH déposés automatiquement</li>
+          <li>VM à deux cartes : NAT pour l'administration, pont sur le réseau surveillé</li>
+          <li>Suricata avec 53 600 règles Emerging Threats et des règles locales (balayages, protocoles en clair)</li>
+          <li>Prometheus et blackbox_exporter : ping, DNS et HTTP toutes les 30 s, 10 règles d'alerte</li>
+          <li>Découverte nmap toutes les 15 min, inventaire horodaté des appareils, arpwatch</li>
+          <li>Tableau de bord Grafana provisionné par fichiers, trafic par appareil avec darkstat</li>
+          <li>Pare-feu nftables : aucun service exposé sur le réseau, adresses MAC minimisées (RGPD)</li>
+          <li>Sauvegarde quotidienne testée, planning, indicateurs et analyse des écarts, recette 20/20</li>
+        </ul>
+      </div>
+    <div class="pc-block"><div class="pc-head"><span class="pc-title">Compétences du bloc 1</span><span class="pc-count">14 couvertes · 1 partielle sur 23</span><a class="pc-link" href="grille-e5.html">Voir la grille E5 →</a></div><div class="pc-grid"><div class="pc-group pc-off"><div class="pc-name">Rendre compte d&#x27;un travail en équipe</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Gérer le patrimoine informatique</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Recenser et identifier les ressources numériques</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Exploiter des référentiels, normes et standards</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Mettre en place et vérifier les niveaux d&#x27;habilitation associés à un service</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Vérifier les conditions de la continuité d&#x27;un service informatique</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Gérer des sauvegardes</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Vérifier le respect des règles d&#x27;utilisation des ressources numériques</li></ul></div><div class="pc-group"><div class="pc-name">Répondre aux incidents et aux demandes d&#x27;assistance et d&#x27;évolution</div><ul><li><span class="g-mark g-part" aria-label="partiel"></span>Collecter, suivre et orienter des demandes</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Traiter des demandes concernant les services réseau et système, applicatifs</li></ul></div><div class="pc-group pc-off"><div class="pc-name">Développer la présence en ligne de l&#x27;organisation</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Travailler en mode projet</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Analyser les objectifs et les modalités d&#x27;organisation d&#x27;un projet</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Planifier les activités</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Évaluer les indicateurs de suivi d&#x27;un projet et analyser les écarts</li></ul></div><div class="pc-group"><div class="pc-name">Mettre à disposition des utilisateurs un service informatique</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Réaliser les tests d&#x27;intégration et d&#x27;acceptation d&#x27;un service</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Déployer un service</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Accompagner les utilisateurs dans la mise en place d&#x27;un service</li></ul></div><div class="pc-group"><div class="pc-name">Organiser son développement professionnel</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Mettre en place son environnement d&#x27;apprentissage personnel</li></ul></div></div></div>
+      </article>
   </div>
 
   <div class="docs-library fade-in d3">
@@ -265,6 +304,8 @@
       <a class="doc-link" href="docs/glpi-guide-utilisateur.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Guide utilisateur GLPI</span><span class="doc-link-meta">Bloc 1 · Support utilisateurs · 11 pages</span></a>
       <a class="doc-link" href="veille-doc.html"><span class="doc-link-type web">WEB</span><span class="doc-link-name">Veille automatisée</span><span class="doc-link-meta">Bloc 1 · GitHub Actions · Python</span></a>
       <a class="doc-link" href="docs/cle-usb-bootable.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Clé USB bootable multiboot</span><span class="doc-link-meta">Bloc 1 · Ventoy · chntpw · 5 pages</span></a>
+      <a class="doc-link" href="docs/monitoring-kali-installation.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Sonde de supervision sous Kali Linux</span><span class="doc-link-meta">Bloc 2 · Suricata · Prometheus · Grafana · 24 pages</span></a>
+      <a class="doc-link" href="docs/monitoring-kali-guide-utilisateur.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Guide utilisateur de la sonde</span><span class="doc-link-meta">Bloc 1 · Alertes et analyse de trafic · 13 pages</span></a>
     </div>
   </div>
 

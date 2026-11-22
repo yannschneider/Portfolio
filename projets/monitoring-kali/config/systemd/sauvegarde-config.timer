@@ -1,0 +1,9 @@
+[Unit]
+Description=Sauvegarde quotidienne a 02h30
+
+[Timer]
+OnCalendar=*-*-* 02:30:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

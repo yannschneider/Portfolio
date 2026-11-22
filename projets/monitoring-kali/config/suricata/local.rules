@@ -1,0 +1,10 @@
+# Regles locales - kali-monitor (SID 9000001 a 9000099)
+# Balayage de ports TCP SYN (type nmap -sS) : 20 SYN en 10 s depuis la meme source
+alert tcp any any -> $HOME_NET any (msg:"LOCAL SCAN balayage de ports TCP SYN"; flow:stateless; flags:S,12; threshold:type both, track by_src, count 20, seconds 10; classtype:attempted-recon; sid:9000001; rev:1;)
+# Balayage ICMP (ping sweep) : 15 echo request en 10 s depuis la meme source
+alert icmp any any -> $HOME_NET any (msg:"LOCAL SCAN balayage ICMP ping sweep"; itype:8; threshold:type both, track by_src, count 15, seconds 10; classtype:attempted-recon; sid:9000002; rev:1;)
+# Protocoles d'administration en clair sur le reseau local
+alert tcp $HOME_NET any -> any 23 (msg:"LOCAL POLITIQUE connexion Telnet en clair"; flow:to_server,established; classtype:policy-violation; sid:9000010; rev:1;)
+alert tcp $HOME_NET any -> any 21 (msg:"LOCAL POLITIQUE identifiant FTP en clair"; flow:to_server,established; content:"USER "; depth:5; classtype:policy-violation; sid:9000011; rev:1;)
+# Requete DNS vers un resolveur autre que la box (contournement du filtrage)
+alert udp $HOME_NET any -> !$HOME_NET 53 (msg:"LOCAL POLITIQUE requete DNS hors de la box"; threshold:type limit, track by_src, count 1, seconds 3600; classtype:policy-violation; sid:9000020; rev:1;)

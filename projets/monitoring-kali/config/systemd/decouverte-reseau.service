@@ -1,0 +1,7 @@
+[Unit]
+Description=Decouverte des appareils du reseau local
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/decouverte-reseau
