@@ -3,28 +3,35 @@
 
 Lit des flux RSS/Atom, garde les articles les plus récents et réécrit
 les blocs situés entre les marqueurs VEILLE-AUTO de veille.html.
+Les articles en anglais sont traduits en français (API publique MyMemory) ;
+un article qu'on n'arrive pas à traduire n'est pas publié.
 Aucune dépendance : uniquement la bibliothèque standard de Python.
 
 Lancement :  python scripts/update_veille.py
 """
 import datetime as dt
 import email.utils
+import hashlib
 import html
+import json
 import pathlib
 import re
 import sys
+import time
+import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 
 # --------------------------------------------------------------------------
 # SOURCES — modifie librement cette liste.
 # "filtre": True  -> on ne garde que les articles contenant un mot-clé du thème
+# "langue": "en"  -> articles traduits en français (sinon la langue est détectée)
 # --------------------------------------------------------------------------
 SOURCES = {
     "reseau": [
         {"nom": "IT-Connect", "url": "https://www.it-connect.fr/feed/", "filtre": True},
         {"nom": "Le Monde Informatique", "url": "https://www.lemondeinformatique.fr/flux-rss/thematique/reseaux/rss.xml", "filtre": False},
-        {"nom": "Network World", "url": "https://www.networkworld.com/feed/", "filtre": True},
+        {"nom": "Network World", "url": "https://www.networkworld.com/feed/", "filtre": True, "langue": "en"},
     ],
     "cyber": [
         {"nom": "CERT-FR alertes", "url": "https://www.cert.ssi.gouv.fr/alerte/feed/", "filtre": False},
@@ -51,6 +58,11 @@ TIMEOUT = 20
 
 RACINE = pathlib.Path(__file__).resolve().parent.parent
 PAGE = RACINE / "veille.html"
+CACHE = RACINE / "scripts" / "traductions.json"   # évite de retraduire chaque matin
+
+# Traduction : API publique MyMemory, sans clé (environ 5 000 caractères/jour,
+# 500 caractères par requête). La veille en consomme moins de 2 000.
+API_TRADUCTION = "https://api.mymemory.translated.net/get"
 
 MOIS = ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
 ATOM = "{http://www.w3.org/2005/Atom}"
@@ -135,6 +147,59 @@ def analyser(xml_bytes, nom):
     return [a for a in articles if a["titre"] and a["lien"].startswith("http")]
 
 
+MOTS_EN = {"the", "and", "of", "to", "in", "for", "with", "is", "on", "are", "how", "what",
+           "why", "new", "your", "from", "by", "its", "will", "can", "this", "that", "it", "as"}
+MOTS_FR = {"le", "la", "les", "des", "du", "de", "et", "un", "une", "pour", "dans", "est",
+           "sur", "avec", "au", "aux", "que", "qui", "en", "par", "ce", "cette", "son", "ses"}
+
+
+def est_anglais(texte):
+    mots = re.findall(r"[a-zà-ÿ']+", texte.lower())
+    return sum(m in MOTS_EN for m in mots) > sum(m in MOTS_FR for m in mots)
+
+
+def traduire(texte, cache, utilises):
+    """Traduit un texte anglais en français. Renvoie None en cas d'échec."""
+    if not texte:
+        return texte
+    cle = hashlib.sha1(texte.encode("utf-8")).hexdigest()
+    if cle in cache:
+        utilises[cle] = cache[cle]
+        return cache[cle]
+    url = API_TRADUCTION + "?" + urllib.parse.urlencode({"q": texte[:480], "langpair": "en|fr"})
+    for essai in range(3):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": ENTETES["User-Agent"]})
+            with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
+                rep = json.load(r)
+            fr = html.unescape((rep.get("responseData") or {}).get("translatedText") or "").strip()
+            if rep.get("responseStatus") in (200, "200") and fr and "MYMEMORY WARNING" not in fr.upper():
+                utilises[cle] = fr
+                return fr
+            print(f"  ! traduction refusée : {rep.get('responseDetails') or rep.get('responseStatus')}",
+                  file=sys.stderr)
+            return None
+        except Exception as e:
+            if essai == 2:
+                print(f"  ! traduction impossible : {e}", file=sys.stderr)
+                return None
+            time.sleep(2)
+
+
+def franciser(article, cache, utilises):
+    """Met l'article en français. False si c'est impossible (il ne sera pas publié)."""
+    anglais = article.get("langue") == "en" or (
+        article.get("langue") is None and est_anglais(article["titre"] + " " + article["resume"]))
+    if not anglais:
+        return True
+    titre = traduire(article["titre"], cache, utilises)
+    resume = traduire(article["resume"], cache, utilises)
+    if not titre or resume is None:
+        return False
+    article["titre"], article["resume"], article["traduit"] = titre, resume, True
+    return True
+
+
 def correspond(article, theme):
     texte = (article["titre"] + " " + article["resume"]).lower()
     return any(m in texte for m in MOTS_CLES[theme])
@@ -149,6 +214,8 @@ def collecter(theme, maintenant):
         except Exception as e:  # une source en panne ne bloque pas les autres
             print(f"  ! {src['nom']} ignorée : {e}", file=sys.stderr)
             continue
+        for a in articles:
+            a["langue"] = src.get("langue")
         if src.get("filtre"):
             articles = [a for a in articles if correspond(a, theme)]
         articles = [a for a in articles if a["date"] and a["date"] >= limite]
@@ -162,7 +229,7 @@ def collecter(theme, maintenant):
             gardes += 1
         print(f"  {src['nom']} : {gardes} article(s)")
     tous.sort(key=lambda a: a["date"], reverse=True)
-    return tous[:MAX_ARTICLES]
+    return tous   # tous les candidats : la sélection finale se fait après traduction
 
 
 def rendre(articles, maintenant):
@@ -172,8 +239,9 @@ def rendre(articles, maintenant):
     for a in articles:
         e = html.escape
         resume = f"\n          <p>{e(a['resume'])}</p>" if a["resume"] else ""
+        mention = " · traduit de l'anglais" if a.get("traduit") else ""
         lignes.append(f"""        <li class="veille-feed-item">
-          <div class="veille-feed-src"><b>{e(a['source'])}</b><span>{date_fr(a['date'])}</span></div>
+          <div class="veille-feed-src"><b>{e(a['source'])}</b><span>{date_fr(a['date'])}{mention}</span></div>
           <a href="{e(a['lien'], quote=True)}" target="_blank" rel="noopener">{e(a['titre'])}</a>{resume}
         </li>""")
     lignes.append("      </ul>")
@@ -184,10 +252,23 @@ def rendre(articles, maintenant):
 def main():
     page = PAGE.read_text(encoding="utf-8")
     maintenant = dt.datetime.now(dt.timezone.utc)
+    try:
+        cache = json.loads(CACHE.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        cache = {}
+    utilises = {}
     total = 0
     for theme in SOURCES:
         print(f"[{theme}]")
-        articles = collecter(theme, maintenant)
+        articles = []
+        for a in collecter(theme, maintenant):
+            if len(articles) >= MAX_ARTICLES:
+                break
+            if franciser(a, cache, utilises):
+                articles.append(a)
+            else:
+                print(f"  - écarté (traduction indisponible) : {a['titre'][:70]}")
+        print(f"  {sum(1 for a in articles if a.get('traduit'))} article(s) traduit(s)")
         total += len(articles)
         if not articles:
             print("  aucun article : bloc laissé tel quel")
@@ -198,6 +279,10 @@ def main():
             sys.exit(f"Marqueurs VEILLE-AUTO:{theme} introuvables dans veille.html")
         page = motif.sub(lambda m: m.group(1) + rendre(articles, maintenant) + m.group(2), page)
     PAGE.write_text(page, encoding="utf-8")
+    # le cache ne garde que les traductions affichées : il reste petit
+    nouveau = json.dumps(dict(sorted(utilises.items())), ensure_ascii=False, indent=1) + "\n"
+    if not CACHE.exists() or CACHE.read_text(encoding="utf-8") != nouveau:
+        CACHE.write_text(nouveau, encoding="utf-8")
     if total == 0:
         # toutes les sources ont échoué : on fait échouer l'Action pour que ça se voie
         sys.exit("Aucun article récupéré : toutes les sources sont injoignables ou bloquées.")
