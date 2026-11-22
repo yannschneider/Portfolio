@@ -120,12 +120,13 @@
       <tr><td>Compte GitHub</td><td>Héberge le dépôt et exécute l'automatisation</td><td>Gratuit</td></tr>
       <tr><td>Dépôt public</td><td>Contient le site, le script et le workflow</td><td>—</td></tr>
       <tr><td>GitHub Pages</td><td>Publie le site à partir de la branche <code>main</code></td><td>Gratuit</td></tr>
-      <tr><td>GitHub Actions</td><td>Lance le script chaque jour (runner <code>ubuntu-latest</code>)</td><td>Gratuit pour un dépôt public</td></tr>
-      <tr><td>Python</td><td>Langage du script, bibliothèque standard uniquement</td><td>3.12</td></tr>
-      <tr><td>Éditeur de code</td><td>Modifier le script et les pages</td><td>VS Code ou autre</td></tr>
+      <tr><td>GitHub Actions</td><td>Lance le script chaque jour (runner <code>ubuntu-latest</code>, action <code>actions/checkout@v5</code>)</td><td>Gratuit pour un dépôt public</td></tr>
+      <tr><td>Python 3</td><td>Langage du script, bibliothèque standard uniquement</td><td>Déjà installé sur le runner Ubuntu</td></tr>
+      <tr><td>Navigateur web</td><td>Envoyer et modifier les fichiers depuis l'interface de GitHub</td><td>Aucun logiciel à installer</td></tr>
     </tbody>
   </table></div>
-  <p>Aucune bibliothèque externe n'est installée : <code>urllib</code>, <code>xml.etree</code>, <code>email.utils</code>, <code>html</code> et <code>re</code> suffisent. Cela évite toute dépendance à maintenir.</p>
+  <p>Aucune bibliothèque externe n'est installée : <code>urllib</code>, <code>xml.etree</code>, <code>email.utils</code>, <code>html</code> et <code>re</code> suffisent. Python 3 étant déjà présent sur le runner Ubuntu de GitHub, le workflow n'a pas besoin d'étape d'installation de Python : il y a moins d'étapes susceptibles de tomber en panne.</p>
+  <p>Ni Git ni Python ne sont nécessaires sur le poste de travail : tout se fait depuis le site de GitHub (envoi de fichiers, éditeur en ligne, lancement manuel du workflow).</p>
 
   <h2 id="sources">4. Choix des sources</h2>
   <p>Les sources ont été retenues pour leur fiabilité, leur fréquence de publication et la disponibilité d'un flux RSS ou Atom public. Les sources généralistes passent par un filtre de mots-clés pour ne garder que le thème de l'onglet.</p>
@@ -154,7 +155,7 @@
   <h2 id="script">5. Fonctionnement du script <code>update_veille.py</code></h2>
   <p>Le script lit chaque flux, garde les articles qui respectent les critères, puis réécrit uniquement la zone balisée de <code>veille.html</code>. Le reste de la page n'est jamais touché.</p>
   <ol>
-    <li><strong>Téléchargement</strong> : <code>urllib.request</code> récupère chaque flux avec un délai maximal de 20 secondes. En cas d'erreur, la source est ignorée et un message s'affiche dans le journal.</li>
+    <li><strong>Téléchargement</strong> : <code>urllib.request</code> récupère chaque flux avec un délai maximal de 20 secondes. La requête se présente comme un navigateur classique (en-têtes <code>User-Agent</code>, <code>Accept</code> et <code>Accept-Language</code>) : beaucoup de sites protégés par Cloudflare ou WordPress refusent (erreur 403) un robot au nom inconnu. Un flux qui échoue est retenté une fois ; s'il échoue encore, la source est ignorée et un message s'affiche dans le journal.</li>
     <li><strong>Analyse XML</strong> : <code>xml.etree.ElementTree</code> lit les deux formats existants, RSS 2.0 (balises <code>&lt;item&gt;</code>) et Atom (balises <code>&lt;entry&gt;</code>).</li>
     <li><strong>Nettoyage</strong> : les balises HTML des résumés sont retirées et le texte est coupé à 220 caractères.</li>
     <li><strong>Filtrage</strong> : âge maximal, mots-clés pour les sources marquées <code>filtre: True</code>, limite par source, doublons.</li>
@@ -177,30 +178,48 @@
 MAX_ARTICLES = 6
 MAX_PAR_SOURCE = 3
 MAX_AGE_JOURS = 45</code></pre>
-  <p>Si aucun article n'est trouvé pour un thème, le bloc existant est conservé tel quel au lieu d'être vidé.</p>
+  <p>Si aucun article n'est trouvé pour un thème, le bloc existant est conservé tel quel au lieu d'être vidé. Si <strong>aucun</strong> article n'est trouvé pour l'ensemble des thèmes (toutes les sources bloquées ou en panne), le script s'arrête en erreur : le workflow passe en rouge dans l'onglet <em>Actions</em> au lieu de se terminer en vert sans rien avoir fait.</p>
 
   <h2 id="installation">6. Procédure de mise en place</h2>
   <p>La mise en place prend une quinzaine de minutes et ne se fait qu'une fois.</p>
   <ol>
     <li><strong>Créer le dépôt</strong> : sur GitHub, <em>New repository</em>, visibilité <em>Public</em>.</li>
-    <li><strong>Envoyer les fichiers</strong> : les pages HTML, <code>style.css</code>, <code>script.js</code>, <code>scripts/update_veille.py</code> et <code>.github/workflows/veille.yml</code>. Le dossier <code>.github</code> est caché sur la plupart des systèmes : vérifier qu'il est bien présent dans le dépôt.</li>
+    <li><strong>Envoyer les fichiers du site</strong> : <em>Add file → Upload files</em>, puis glisser les pages HTML, <code>style.css</code>, <code>script.js</code>, le dossier <code>docs</code> et le dossier <code>scripts</code>.</li>
+    <li><strong>Créer le workflow à part</strong> : l'envoi par glisser-déposer ignore les dossiers dont le nom commence par un point, donc <code>.github</code> n'est jamais envoyé. Il faut passer par <em>Add file → Create new file</em>, taper le chemin <code>.github/workflows/veille.yml</code> (chaque <code>/</code> crée un dossier), coller le contenu du workflow et valider. <strong>C'est la cause de la panne rencontrée</strong> : sans ce fichier, rien ne se lance et la page reste sur son texte d'attente.</li>
     <li><strong>Activer GitHub Pages</strong> : <em>Settings → Pages</em>, source <em>Deploy from a branch</em>, branche <code>main</code>, dossier <code>/ (root)</code>.</li>
-    <li><strong>Autoriser l'écriture</strong> : <em>Settings → Actions → General → Workflow permissions</em>, cocher <em>Read and write permissions</em>. Sans ce réglage, l'Action ne peut pas enregistrer la page mise à jour.</li>
-    <li><strong>Premier lancement</strong> : onglet <em>Actions</em>, workflow « Mise à jour de la veille », bouton <em>Run workflow</em>.</li>
-    <li><strong>Vérifier</strong> : le journal liste le nombre d'articles par source, un commit « Veille : mise à jour automatique du … » apparaît, puis la page Veille du site affiche les articles une à deux minutes plus tard.</li>
+    <li><strong>Droits d'écriture</strong> : le workflow déclare lui-même <code>permissions: contents: write</code>, ce qui suffit sur un dépôt personnel. Si l'étape « Publier » échoue quand même, cocher <em>Read and write permissions</em> dans <em>Settings → Actions → General → Workflow permissions</em>.</li>
+    <li><strong>Premier lancement</strong> : onglet <em>Actions</em>, workflow « Mise à jour de la veille », bouton <em>Run workflow</em>. Si le workflow n'apparaît pas dans la liste, le fichier <code>.github/workflows/veille.yml</code> est absent du dépôt (voir l'étape 3).</li>
+    <li><strong>Vérifier</strong> : le journal liste le nombre d'articles par source, un commit « Veille : mise à jour automatique du … » signé <code>github-actions[bot]</code> apparaît, puis la page Veille du site affiche les articles une à deux minutes plus tard.</li>
   </ol>
-  <p>Le workflow <code>veille.yml</code> se déclenche de deux façons :</p>
+  <p>Le workflow <code>veille.yml</code> complet :</p>
 <pre><code>on:
   schedule:
     - cron: "23 5 * * *"   # chaque jour à 5h23 UTC (6h23 à Paris en hiver)
   workflow_dispatch:        # lancement manuel
 
 permissions:
-  contents: write          # nécessaire pour faire le commit</code></pre>
-  <p>La dernière étape du workflow ne fait un commit que si <code>veille.html</code> a réellement changé (<code>git diff --quiet</code>). L'historique du dépôt ne se remplit donc pas de commits vides.</p>
+  contents: write          # nécessaire pour faire le commit
+
+concurrency:
+  group: veille            # jamais deux exécutions en même temps
+
+jobs:
+  veille:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - run: python3 scripts/update_veille.py
+      - run: |
+          if git diff --quiet -- veille.html; then exit 0; fi
+          git add veille.html
+          git commit -m "Veille : mise à jour automatique du $(date +%d/%m/%Y)"
+          git pull --rebase --autostash
+          git push</code></pre>
+  <p>La dernière étape ne fait un commit que si <code>veille.html</code> a réellement changé (<code>git diff --quiet</code>) : l'historique du dépôt ne se remplit pas de commits vides. Le <code>git pull --rebase</code> avant l'envoi évite un refus si un autre commit a été poussé pendant l'exécution, par exemple une modification faite au même moment depuis le site de GitHub.</p>
 
   <h2 id="tests">7. Tests et validation</h2>
-  <p>Le script a d'abord été testé avec des flux d'essai, puis il doit être validé sur les vrais flux après le déploiement.</p>
+  <p>Le script a d'abord été testé avec des flux d'essai, puis validé sur les vrais flux après le déploiement.</p>
   <p><strong>Tests unitaires réalisés (flux d'essai).</strong></p>
   <div class="table-wrap"><table>
     <thead><tr><th>Cas testé</th><th>Résultat attendu</th><th>Résultat obtenu</th></tr></thead>
@@ -213,13 +232,22 @@ permissions:
       <tr><td>Caractère spécial dans un titre (<code>&amp;</code>)</td><td>Échappé en <code>&amp;amp;</code>, affiché correctement</td><td class="ok">Conforme</td></tr>
     </tbody>
   </table></div>
-  <p><strong>Tests à réaliser après déploiement.</strong></p>
+  <p><strong>Validation sur les vrais flux (22 novembre 2026, lancement manuel).</strong></p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Vérification</th><th>Résultat attendu</th><th>Résultat obtenu</th></tr></thead>
+    <tbody>
+      <tr><td>Exécution du workflow</td><td>Statut vert dans l'onglet <em>Actions</em></td><td class="ok">Conforme (14 s)</td></tr>
+      <tr><td>Onglet Réseau</td><td>Au moins un article par source</td><td class="ok">IT-Connect 1, Le Monde Informatique 3, Network World 3</td></tr>
+      <tr><td>Onglet Cybersécurité</td><td>Au moins un article par source</td><td class="ok">CERT-FR alertes 3, CERT-FR actualités 3, ZATAZ 3, IT-Connect 3</td></tr>
+      <tr><td>Commit automatique</td><td>Commit « Veille : mise à jour automatique du … » par <code>github-actions[bot]</code></td><td class="ok">Conforme</td></tr>
+      <tr><td>Contenu de <code>veille.html</code></td><td>6 articles par onglet et date de mise à jour</td><td class="ok">12 articles, « Dernière mise à jour : 22 nov. 2026 »</td></tr>
+    </tbody>
+  </table></div>
+  <p><strong>Vérifications restantes.</strong></p>
   <ul class="checklist">
-    <li>Lancement manuel du workflow : statut vert dans l'onglet <em>Actions</em></li>
-    <li>Au moins un article récupéré pour chacune des 7 sources (journal)</li>
-    <li>Commit automatique créé, puis page en ligne mise à jour</li>
-    <li>Second lancement le même jour sans nouvel article : aucun commit</li>
     <li>Lancement planifié du lendemain matin effectué</li>
+    <li>Second lancement le même jour sans nouvel article : aucun commit</li>
+    <li>Page en ligne (GitHub Pages) mise à jour après le commit</li>
     <li>Affichage correct sur téléphone</li>
   </ul>
 
@@ -244,13 +272,17 @@ permissions:
     <li>Ajouter ou retirer une source : modifier la liste <code>SOURCES</code> en tête du script, puis relancer le workflow.</li>
     <li>Ajuster les mots-clés si trop d'articles hors sujet passent le filtre, ou trop peu d'articles le traversent.</li>
     <li>Ne jamais modifier à la main le contenu situé entre les marqueurs : il est écrasé au passage suivant.</li>
+    <li>Ne pas renvoyer une ancienne copie locale de <code>veille.html</code> : elle remplacerait les articles récupérés par l'Action. Pour modifier la page, partir de la version en ligne (éditeur de GitHub, ou télécharger le fichier depuis le dépôt).</li>
   </ul>
   <p><strong>Dépannage.</strong></p>
   <div class="table-wrap"><table>
     <thead><tr><th>Symptôme</th><th>Cause probable</th><th>Solution</th></tr></thead>
     <tbody>
+      <tr><td>Le workflow n'apparaît pas dans <em>Actions</em>, la page reste sur « se remplit au premier passage »</td><td>Dossier <code>.github</code> jamais envoyé (ignoré par le glisser-déposer)</td><td>Créer le fichier avec <em>Add file → Create new file</em>, chemin <code>.github/workflows/veille.yml</code></td></tr>
       <tr><td>Workflow en rouge à l'étape « Publier »</td><td>Permission d'écriture absente</td><td><em>Settings → Actions → General</em>, cocher <em>Read and write permissions</em></td></tr>
-      <tr><td>Une source affiche 0 article</td><td>Flux déplacé, en panne ou filtre trop strict</td><td>Ouvrir l'URL du flux dans un navigateur, la corriger ou retirer la source</td></tr>
+      <tr><td>Workflow en rouge avec « Aucun article récupéré »</td><td>Toutes les sources injoignables ou bloquées</td><td>Lire les lignes <code>! … ignorée</code> du journal ; relancer plus tard ou remplacer les sources</td></tr>
+      <tr><td>Une source affiche 0 article ou « HTTP Error 403 »</td><td>Flux déplacé, site qui bloque les robots, ou filtre trop strict</td><td>Ouvrir l'URL du flux dans un navigateur, la corriger ou retirer la source</td></tr>
+      <tr><td>Les articles disparaissent après un envoi de fichiers</td><td>Ancienne copie locale de <code>veille.html</code> renvoyée</td><td>Relancer le workflow ; à l'avenir, modifier la version en ligne</td></tr>
       <tr><td>Message « Marqueurs introuvables »</td><td>Marqueurs supprimés de <code>veille.html</code></td><td>Remettre les deux lignes <code>VEILLE-AUTO</code> de l'onglet concerné</td></tr>
       <tr><td>Plus aucune mise à jour automatique</td><td>Planification suspendue par GitHub après une longue inactivité du dépôt</td><td>Onglet <em>Actions</em>, réactiver le workflow</td></tr>
       <tr><td>Page en ligne inchangée malgré le commit</td><td>Publication GitHub Pages en cours ou en échec</td><td>Vérifier le déploiement <em>pages-build-deployment</em> dans <em>Actions</em></td></tr>
