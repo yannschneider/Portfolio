@@ -1,0 +1,38 @@
+name: Mise à jour de la veille
+
+on:
+  schedule:
+    - cron: "23 5 * * *"   # tous les jours vers 6h23 (heure de Paris, hiver)
+  workflow_dispatch:        # bouton "Run workflow" pour lancer à la main
+
+permissions:
+  contents: write
+
+concurrency:
+  group: veille
+  cancel-in-progress: false
+
+jobs:
+  veille:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      # Python 3 est déjà installé sur ubuntu-latest : pas besoin de setup-python
+      - name: Récupérer les flux RSS et mettre à jour veille.html
+        run: python3 scripts/update_veille.py
+
+      - name: Publier si la page a changé
+        run: |
+          if git diff --quiet -- veille.html; then
+            echo "Rien de nouveau."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add veille.html
+          git commit -m "Veille : mise à jour automatique du $(date +%d/%m/%Y)"
+          # si un commit a été poussé pendant l'exécution, on se remet à jour avant d'envoyer
+          git pull --rebase --autostash
+          git push
