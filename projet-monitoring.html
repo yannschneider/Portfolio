@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Sonde de supervision sous Kali Linux — Yann Schneider</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Portfolio de Yann Schneider, étudiant en BTS SIO option SISR à EnsiTech Saint-Herblain.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="site-nav" aria-label="Navigation principale">
+  <div class="site-nav-inner">
+    <a class="nav-logo" href="index.html">Y<span>ann</span> Schneider</a>
+    <ul>
+      <li><a href="profil.html">Profil</a></li>
+      <li><a href="projets.html" aria-current="page">Projets</a></li>
+      <li><a href="grille-e5.html">Grille E5</a></li>
+      <li><a href="competences.html">Compétences</a></li>
+      <li><a href="veille.html">Veille</a></li>
+      <li><a href="cv.html">CV</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<section class="project-page" id="projet-monitoring">
+  <a class="back-link" href="projets.html">← Tous les projets</a>
+  <div class="section-label">02 — Réalisations</div>
+  <div class="project-detail">
+    <article class="project-card wide fade-in">
+<div class="project-num">PROJET 08 — Supervision &amp; Sécurité</div>
+<div class="project-body-split">
+<div>
+<div class="project-icon green">📈</div>
+<h2 class="project-title">Sonde de supervision sous Kali Linux</h2>
+<p class="project-subtitle">Disponibilité, inventaire et détection d'intrusion du réseau local</p>
+<p class="project-desc">
+            Sonde virtuelle construite à partir de l'ISO Kali Linux 2026.3 : installation entièrement automatisée, outils de Kali (nmap, tcpdump, Wireshark) complétés par Suricata, Prometheus, Grafana, darkstat, arpwatch et vnStat. Elle surveille la box, le DNS et Internet, inventorie les appareils, détecte les balayages et alerte en moins de trois minutes. Recette de 20 tests, tous validés.
+          </p>
+<div class="tags">
+<span class="tag active">Kali Linux</span>
+<span class="tag active">Suricata</span>
+<span class="tag active">Prometheus</span>
+<span class="tag active">Grafana</span>
+<span class="tag">nmap</span>
+<span class="tag">nftables</span>
+<span class="tag">VirtualBox</span>
+</div>
+<div class="project-docs">
+<a class="doc-link" href="docs/monitoring-kali-installation.pdf" rel="noopener" target="_blank"><span class="doc-link-type">PDF</span><span class="doc-link-name">Documentation d'installation — Sonde de supervision Kali</span><span class="doc-link-meta">24 pages</span></a>
+<a class="doc-link" href="docs/monitoring-kali-guide-utilisateur.pdf" rel="noopener" target="_blank"><span class="doc-link-type">PDF</span><span class="doc-link-name">Guide utilisateur — Surveiller son réseau avec la sonde</span><span class="doc-link-meta">13 pages</span></a>
+<a class="doc-link" href="https://github.com/yannschneider/Portfolio/tree/main/projets/monitoring-kali" rel="noopener" target="_blank"><span class="doc-link-type web">CODE</span><span class="doc-link-name">Scripts et fichiers de configuration</span><span class="doc-link-meta">preseed · provisionnement · recette</span></a>
+</div>
+</div>
+<ul class="project-tasks">
+<li>Installation de Kali sans intervention par fichier preseed servi en HTTP, compte et clé SSH déposés automatiquement</li>
+<li>VM à deux cartes : NAT pour l'administration, pont sur le réseau surveillé</li>
+<li>Suricata avec 53 600 règles Emerging Threats et des règles locales (balayages, protocoles en clair)</li>
+<li>Prometheus et blackbox_exporter : ping, DNS et HTTP toutes les 30 s, 10 règles d'alerte</li>
+<li>Découverte nmap toutes les 15 min, inventaire horodaté des appareils, arpwatch</li>
+<li>Tableau de bord Grafana provisionné par fichiers, trafic par appareil avec darkstat</li>
+<li>Pare-feu nftables : aucun service exposé sur le réseau, adresses MAC minimisées (RGPD)</li>
+<li>Sauvegarde quotidienne testée, planning, indicateurs et analyse des écarts, recette 20/20</li>
+</ul>
+</div>
+<div class="pc-block"><div class="pc-head"><span class="pc-title">Compétences du bloc 1</span><span class="pc-count">14 couvertes · 1 partielle sur 23</span><a class="pc-link" href="grille-e5.html">Voir la grille E5 →</a></div><div class="pc-grid"><div class="pc-group pc-off"><div class="pc-name">Rendre compte d'un travail en équipe</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Gérer le patrimoine informatique</div><ul><li><span aria-label="couvert" class="g-mark g-full">✓</span>Recenser et identifier les ressources numériques</li><li><span aria-label="couvert" class="g-mark g-full">✓</span>Exploiter des référentiels, normes et standards</li><li><span aria-label="couvert" class="g-mark g-full">✓</span>Mettre en place et vérifier les niveaux d'habilitation associés à un service</li><li><span aria-label="couvert" class="g-mark g-full">✓</span>Vérifier les conditions de la continuité d'un service informatique</li><li><span aria-label="couvert" class="g-mark g-full">✓</span>Gérer des sauvegardes</li><li><span aria-label="couvert" class="g-mark g-full">✓</span>Vérifier le respect des règles d'utilisation des ressources numériques</li></ul></div><div class="pc-group"><div class="pc-name">Répondre aux incidents et aux demandes d'assistance et d'évolution</div><ul><li><span aria-label="partiel" class="g-mark g-part"></span>Collecter, suivre et orienter des demandes</li><li><span aria-label="couvert" class="g-mark g-full">✓</span>Traiter des demandes concernant les services réseau et système, applicatifs</li></ul></div><div class="pc-group pc-off"><div class="pc-name">Développer la présence en ligne de l'organisation</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Travailler en mode projet</div><ul><li><span aria-label="couvert" class="g-mark g-full">✓</span>Analyser les objectifs et les modalités d'organisation d'un projet</li><li><span aria-label="couvert" class="g-mark g-full">✓</span>Planifier les activités</li><li><span aria-label="couvert" class="g-mark g-full">✓</span>Évaluer les indicateurs de suivi d'un projet et analyser les écarts</li></ul></div><div class="pc-group"><div class="pc-name">Mettre à disposition des utilisateurs un service informatique</div><ul><li><span aria-label="couvert" class="g-mark g-full">✓</span>Réaliser les tests d'intégration et d'acceptation d'un service</li><li><span aria-label="couvert" class="g-mark g-full">✓</span>Déployer un service</li><li><span aria-label="couvert" class="g-mark g-full">✓</span>Accompagner les utilisateurs dans la mise en place d'un service</li></ul></div><div class="pc-group"><div class="pc-name">Organiser son développement professionnel</div><ul><li><span aria-label="couvert" class="g-mark g-full">✓</span>Mettre en place son environnement d'apprentissage personnel</li></ul></div></div></div>
+</article>
+  </div>
+  <nav class="page-nav" aria-label="Projets voisins">
+    <a class="prev" href="projet-cle-usb.html"><small>← Projet précédent</small><span>Clé USB bootable multiboot</span></a>
+    <a class="next" href="projet-durcissement.html"><small>Projet suivant →</small><span>Durcissement d'un serveur Linux</span></a>
+  </nav>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-brand">YS.</div>
+    <div class="footer-copy">© 2026 Yann Schneider — Portfolio BTS SIO SISR</div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

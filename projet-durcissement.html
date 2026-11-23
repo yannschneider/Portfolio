@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Durcissement d'un serveur Linux — Yann Schneider</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Portfolio de Yann Schneider, étudiant en BTS SIO option SISR à EnsiTech Saint-Herblain.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="site-nav" aria-label="Navigation principale">
+  <div class="site-nav-inner">
+    <a class="nav-logo" href="index.html">Y<span>ann</span> Schneider</a>
+    <ul>
+      <li><a href="profil.html">Profil</a></li>
+      <li><a href="projets.html" aria-current="page">Projets</a></li>
+      <li><a href="grille-e5.html">Grille E5</a></li>
+      <li><a href="competences.html">Compétences</a></li>
+      <li><a href="veille.html">Veille</a></li>
+      <li><a href="cv.html">CV</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<section class="project-page" id="projet-durcissement">
+  <a class="back-link" href="projets.html">← Tous les projets</a>
+  <div class="section-label">02 — Réalisations</div>
+  <div class="project-detail">
+    <article class="project-card wide fade-in">
+<div class="project-num">PROJET 09 — Cybersécurité</div>
+<div class="project-body-split">
+<div>
+<div class="project-icon red">🔐</div>
+<h2 class="project-title">Durcissement d'un serveur Linux</h2>
+<p class="project-subtitle">Sécuriser un serveur Debian avant sa mise en production</p>
+<p class="project-desc">
+            Une PME installe un serveur Debian 13 pour ses services internes. Avant la mise en production, j'ai réduit sa surface d'attaque : compte d'administration dédié, politique de mots de passe, SSH par clé uniquement, pare-feu, fail2ban et mises à jour automatiques. Chaque mesure a été vérifiée depuis un second poste, puis le résultat mesuré avec un audit Lynis.
+          </p>
+<div class="tags">
+<span class="tag active">Debian 13</span>
+<span class="tag active">OpenSSH</span>
+<span class="tag active">ufw</span>
+<span class="tag active">fail2ban</span>
+<span class="tag">PAM</span>
+<span class="tag">Lynis</span>
+<span class="tag">VirtualBox</span>
+</div>
+<div class="project-docs">
+<a class="doc-link" href="docs/durcissement-linux-installation.pdf" rel="noopener" target="_blank"><span class="doc-link-type">PDF</span><span class="doc-link-name">Documentation d'installation — Durcissement du serveur</span><span class="doc-link-meta">29 pages</span></a>
+<a class="doc-link" href="docs/durcissement-linux-guide-utilisateur.pdf" rel="noopener" target="_blank"><span class="doc-link-type">PDF</span><span class="doc-link-name">Guide d'exploitation — Administrer le serveur durci</span><span class="doc-link-meta">10 pages</span></a>
+</div>
+</div>
+<ul class="project-tasks">
+<li>Maquette VirtualBox : serveur Debian 13 et poste client sur un réseau isolé, instantané avant durcissement</li>
+<li>Partitions /home, /var et /tmp séparées, compte root verrouillé</li>
+<li>Compte d'administration sudo dédié, politique de mots de passe (pam_pwquality)</li>
+<li>Verrouillage du compte après 5 échecs (pam_faillock)</li>
+<li>SSH par clé ED25519 uniquement : root et mots de passe refusés, AllowUsers</li>
+<li>Pare-feu ufw en refus par défaut, seul SSH autorisé</li>
+<li>fail2ban : bannissement après 3 échecs, testé par une attaque simulée</li>
+<li>Mises à jour de sécurité automatiques, services inutiles désactivés</li>
+<li>Audit Lynis (indice 70/100), tests rejoués après redémarrage</li>
+</ul>
+</div>
+<div class="project-shots">
+<figure><img alt="Tests SSH depuis le poste client : clé acceptée, mot de passe et root refusés" loading="lazy" src="img/durcissement/ssh-tests.webp"/><figcaption>SSH : clé acceptée, mot de passe et root refusés</figcaption></figure>
+<figure><img alt="Attaque simulée : l'adresse du client est bannie par fail2ban" loading="lazy" src="img/durcissement/fail2ban-attaque.webp"/><figcaption>fail2ban bannit l'attaquant après 3 échecs</figcaption></figure>
+<figure><img alt="Pare-feu ufw : refus par défaut, seul le port 22 ouvert" loading="lazy" src="img/durcissement/ufw.webp"/><figcaption>ufw : tout est bloqué sauf SSH</figcaption></figure>
+<figure><img alt="Audit Lynis : indice de durcissement 70" loading="lazy" src="img/durcissement/lynis.webp"/><figcaption>Audit Lynis : indice 70/100</figcaption></figure>
+</div>
+<div class="pc-block"><div class="pc-head"><span class="pc-title">Compétences du bloc 1</span><span class="pc-count">11 couvertes · 3 partielles sur 23</span><a class="pc-link" href="grille-e5.html">Voir la grille E5 →</a></div><div class="pc-grid"><div class="pc-group pc-off"><div class="pc-name">Rendre compte d'un travail en équipe</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Gérer le patrimoine informatique</div><ul><li><span aria-label="partiel" class="g-mark g-part"></span>Recenser et identifier les ressources numériques</li><li><span aria-label="couvert" class="g-mark g-full">✓</span>Exploiter des référentiels, normes et standards</li><li><span aria-label="couvert" class="g-mark g-full">✓</span>Mettre en place et vérifier les niveaux d'habilitation associés à un service</li><li><span aria-label="couvert" class="g-mark g-full">✓</span>Vérifier les conditions de la continuité d'un service informatique</li><li><span aria-label="partiel" class="g-mark g-part"></span>Gérer des sauvegardes</li><li><span aria-label="couvert" class="g-mark g-full">✓</span>Vérifier le respect des règles d'utilisation des ressources numériques</li></ul></div><div class="pc-group"><div class="pc-name">Répondre aux incidents et aux demandes d'assistance et d'évolution</div><ul><li><span aria-label="couvert" class="g-mark g-full">✓</span>Traiter des demandes concernant les services réseau et système, applicatifs</li></ul></div><div class="pc-group pc-off"><div class="pc-name">Développer la présence en ligne de l'organisation</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Travailler en mode projet</div><ul><li><span aria-label="couvert" class="g-mark g-full">✓</span>Analyser les objectifs et les modalités d'organisation d'un projet</li><li><span aria-label="partiel" class="g-mark g-part"></span>Planifier les activités</li><li><span aria-label="couvert" class="g-mark g-full">✓</span>Évaluer les indicateurs de suivi d'un projet et analyser les écarts</li></ul></div><div class="pc-group"><div class="pc-name">Mettre à disposition des utilisateurs un service informatique</div><ul><li><span aria-label="couvert" class="g-mark g-full">✓</span>Réaliser les tests d'intégration et d'acceptation d'un service</li><li><span aria-label="couvert" class="g-mark g-full">✓</span>Déployer un service</li><li><span aria-label="couvert" class="g-mark g-full">✓</span>Accompagner les utilisateurs dans la mise en place d'un service</li></ul></div><div class="pc-group"><div class="pc-name">Organiser son développement professionnel</div><ul><li><span aria-label="couvert" class="g-mark g-full">✓</span>Mettre en place son environnement d'apprentissage personnel</li></ul></div></div></div>
+</article>
+  </div>
+  <nav class="page-nav" aria-label="Projets voisins">
+    <a class="prev" href="projet-monitoring.html"><small>← Projet précédent</small><span>Sonde de supervision sous Kali Linux</span></a>
+    <a class="next" href="projets.html"><small>Retour →</small><span>Tous les projets</span></a>
+  </nav>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-brand">YS.</div>
+    <div class="footer-copy">© 2026 Yann Schneider — Portfolio BTS SIO SISR</div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

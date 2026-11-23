@@ -1,372 +1,155 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>Projets — Yann Schneider</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Portfolio de Yann Schneider, étudiant en BTS SIO option SISR à EnsiTech Saint-Herblain.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<meta content="cover" name="claude:viewport-fit-sides"/>
+<meta content="Portfolio de Yann Schneider, étudiant en BTS SIO option SISR à EnsiTech Saint-Herblain." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
 </head>
 <body>
-<nav class="site-nav" aria-label="Navigation principale">
-  <div class="site-nav-inner">
-    <a class="nav-logo" href="index.html">Y<span>ann</span> Schneider</a>
-    <ul>
-      <li><a href="profil.html">Profil</a></li>
-      <li><a href="projets.html" aria-current="page">Projets</a></li>
-      <li><a href="grille-e5.html">Grille E5</a></li>
-      <li><a href="competences.html">Compétences</a></li>
-      <li><a href="veille.html">Veille</a></li>
-      <li><a href="cv.html">CV</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </div>
+<nav aria-label="Navigation principale" class="site-nav">
+<div class="site-nav-inner">
+<a class="nav-logo" href="index.html">Y<span>ann</span> Schneider</a>
+<ul>
+<li><a href="profil.html">Profil</a></li>
+<li><a aria-current="page" href="projets.html">Projets</a></li>
+<li><a href="grille-e5.html">Grille E5</a></li>
+<li><a href="competences.html">Compétences</a></li>
+<li><a href="veille.html">Veille</a></li>
+<li><a href="cv.html">CV</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
 </nav>
 <main>
 <section>
-  <div class="section-label">02 — Réalisations</div>
-  <h1 class="section-title">Mes projets</h1>
-  <p class="section-lead">Neuf projets réalisés pendant le BTS SIO SISR, du pare-feu au domaine Active Directory, jusqu'à ma veille technologique automatisée, ma clé USB d'intervention, ma sonde de supervision sous Kali Linux et le durcissement d'un serveur Linux. Chaque projet documenté est accompagné de sa documentation technique en PDF.</p>
-  <div class="projects-grid">
-
-    <article id="projet-pfsense" class="project-card wide fade-in d1">
-      <div class="project-num">PROJET 01 — Infrastructures &amp; Sécurité</div>
-      <div class="project-body-split">
-        <div>
-          <div class="project-icon">🛡️</div>
-          <h2 class="project-title">pfSense — Firewall &amp; VPN</h2>
-          <p class="project-subtitle">Pare-feu du siège, DMZ et deux types de VPN</p>
-          <p class="project-desc">
+<div class="section-label">02 — Réalisations</div>
+<h1 class="section-title">Mes projets</h1>
+<p class="section-lead">Neuf projets réalisés pendant le BTS SIO SISR, du pare-feu au domaine Active Directory, jusqu'à ma veille technologique automatisée, ma clé USB d'intervention, ma sonde de supervision sous Kali Linux et le durcissement d'un serveur Linux. Chaque projet documenté est accompagné de sa documentation technique en PDF.</p>
+<div class="projects-grid">
+<article class="project-card fade-in d1 project-summary" id="projet-pfsense"><div class="project-num">PROJET 01 — Infrastructures &amp; Sécurité</div><div class="project-icon">🛡️</div><h2 class="project-title"><a class="card-link" href="projet-pfsense.html">pfSense — Firewall &amp; VPN</a></h2><p class="project-subtitle">Pare-feu du siège, DMZ et deux types de VPN</p><p class="project-desc">
             Mise en place d'un pare-feu pfSense CE 2.9 à trois zones (WAN, LAN, DMZ) avec une politique « tout est interdit sauf ce qui est autorisé », la publication d'un serveur web en DMZ, un VPN d'accès distant pour les nomades et un VPN site à site vers une agence.
-          </p>
-          <div class="tags">
-            <span class="tag active">pfSense CE 2.9</span>
-            <span class="tag active">OpenVPN</span>
-            <span class="tag active">IPsec IKEv2</span>
-            <span class="tag">DMZ</span>
-            <span class="tag">NAT</span>
-            <span class="tag">PKI</span>
-          </div>
-          <div class="project-docs">
-            <a class="doc-link" href="docs/pfsense-installation.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Documentation d'installation — pfSense, pare-feu et VPN</span><span class="doc-link-meta">28 pages</span></a>
-            <a class="doc-link" href="docs/pfsense-guide-utilisateur.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Guide utilisateur — Travailler à distance avec le VPN</span><span class="doc-link-meta">9 pages</span></a>
-          </div>
-        </div>
-        <ul class="project-tasks">
-          <li>Installation de pfSense CE 2.9 avec le Netgate Installer, interfaces WAN / LAN / DMZ</li>
-          <li>Matrice des flux, alias et règles de filtrage deny-all journalisées</li>
-          <li>Isolement de la DMZ : aucun flux possible vers le LAN</li>
-          <li>Publication du serveur web par redirection de ports (NAT)</li>
-          <li>Résolveur DNS relié à l'Active Directory (zone sisr.lan)</li>
-          <li>Autorité de certification interne, VPN OpenVPN avec certificat et mot de passe</li>
-          <li>Révocation des accès VPN (liste de révocation)</li>
-          <li>VPN IPsec IKEv2 site à site entre le siège et une agence</li>
-          <li>Supervision, sauvegarde chiffrée, cahier de recette de 18 tests</li>
-        </ul>
-      </div>
-    <div class="pc-block"><div class="pc-head"><span class="pc-title">Compétences du bloc 1</span><span class="pc-count">10 couvertes · 4 partielles sur 23</span><a class="pc-link" href="grille-e5.html">Voir la grille E5 →</a></div><div class="pc-grid"><div class="pc-group pc-off"><div class="pc-name">Rendre compte d&#x27;un travail en équipe</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Gérer le patrimoine informatique</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Exploiter des référentiels, normes et standards</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Mettre en place et vérifier les niveaux d&#x27;habilitation associés à un service</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Vérifier les conditions de la continuité d&#x27;un service informatique</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Gérer des sauvegardes</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Vérifier le respect des règles d&#x27;utilisation des ressources numériques</li></ul></div><div class="pc-group"><div class="pc-name">Répondre aux incidents et aux demandes d&#x27;assistance et d&#x27;évolution</div><ul><li><span class="g-mark g-part" aria-label="partiel"></span>Collecter, suivre et orienter des demandes</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Traiter des demandes concernant les services réseau et système, applicatifs</li></ul></div><div class="pc-group"><div class="pc-name">Développer la présence en ligne de l&#x27;organisation</div><ul><li><span class="g-mark g-part" aria-label="partiel"></span>Participer à l&#x27;évolution d&#x27;un site Web exploitant les données de l&#x27;organisation</li></ul></div><div class="pc-group"><div class="pc-name">Travailler en mode projet</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Analyser les objectifs et les modalités d&#x27;organisation d&#x27;un projet</li><li><span class="g-mark g-part" aria-label="partiel"></span>Planifier les activités</li><li><span class="g-mark g-part" aria-label="partiel"></span>Évaluer les indicateurs de suivi d&#x27;un projet et analyser les écarts</li></ul></div><div class="pc-group"><div class="pc-name">Mettre à disposition des utilisateurs un service informatique</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Réaliser les tests d&#x27;intégration et d&#x27;acceptation d&#x27;un service</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Déployer un service</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Accompagner les utilisateurs dans la mise en place d&#x27;un service</li></ul></div><div class="pc-group pc-off"><div class="pc-name">Organiser son développement professionnel</div><span class="pc-none">Non mobilisée dans ce projet</span></div></div></div>
-      </article>
-
-    <article id="projet-ad" class="project-card fade-in d2">
-      <div class="project-num">PROJET 02 — Administration systèmes</div>
-      <div class="project-icon cyan">🗂️</div>
-      <h2 class="project-title">Domaine Active Directory</h2>
-      <p class="project-subtitle">Annuaire centralisé pour une PME de deux services</p>
-      <p class="project-desc">
+          </p><div class="tags">
+<span class="tag active">pfSense CE 2.9</span>
+<span class="tag active">OpenVPN</span>
+<span class="tag active">IPsec IKEv2</span>
+<span class="tag">DMZ</span>
+<span class="tag">NAT</span>
+<span class="tag">PKI</span>
+</div><span aria-hidden="true" class="card-more">Voir le projet →</span></article>
+<article class="project-card fade-in d2 project-summary" id="projet-ad"><div class="project-num">PROJET 02 — Administration systèmes</div><div class="project-icon cyan">🗂️</div><h2 class="project-title"><a class="card-link" href="projet-ad.html">Domaine Active Directory</a></h2><p class="project-subtitle">Annuaire centralisé pour une PME de deux services</p><p class="project-desc">
         Mise en place du domaine sisr.lan sur Windows Server 2022 avec les services DNS et DHCP, organisation de l'annuaire par service, partages avec droits par groupe et stratégies de groupe. Deux postes Windows 11 intégrés au domaine et validés par un cahier de recette.
-      </p>
-      <div class="tags">
-        <span class="tag active">Windows Server 2022</span>
-        <span class="tag active">AD DS</span>
-        <span class="tag active">GPO</span>
-        <span class="tag">DNS</span>
-        <span class="tag">DHCP</span>
-        <span class="tag">AGDLP</span>
-      </div>
-      <ul class="project-tasks">
-        <li>Installation de Windows Server 2022 et promotion en contrôleur de domaine</li>
-        <li>Zones DNS (dont recherche inversée), redirecteurs</li>
-        <li>Étendue DHCP et réservations pour les postes clients</li>
-        <li>Unités d'organisation, utilisateurs et groupes selon la méthode AGDLP</li>
-        <li>Dossiers partagés avec droits NTFS par service et énumération basée sur l'accès</li>
-        <li>GPO : politique de mots de passe, lecteur réseau, restriction du Panneau de configuration</li>
-        <li>Jonction de 2 postes Windows 11 Pro, 16 tests de recette validés</li>
-      </ul>
-      <div class="pc-block"><div class="pc-head"><span class="pc-title">Compétences du bloc 1</span><span class="pc-count">8 couvertes · 4 partielles sur 23</span><a class="pc-link" href="grille-e5.html">Voir la grille E5 →</a></div><div class="pc-grid"><div class="pc-group pc-off"><div class="pc-name">Rendre compte d&#x27;un travail en équipe</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Gérer le patrimoine informatique</div><ul><li><span class="g-mark g-part" aria-label="partiel"></span>Recenser et identifier les ressources numériques</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Exploiter des référentiels, normes et standards</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Mettre en place et vérifier les niveaux d&#x27;habilitation associés à un service</li><li><span class="g-mark g-part" aria-label="partiel"></span>Vérifier les conditions de la continuité d&#x27;un service informatique</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Gérer des sauvegardes</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Vérifier le respect des règles d&#x27;utilisation des ressources numériques</li></ul></div><div class="pc-group"><div class="pc-name">Répondre aux incidents et aux demandes d&#x27;assistance et d&#x27;évolution</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Traiter des demandes concernant les services réseau et système, applicatifs</li></ul></div><div class="pc-group pc-off"><div class="pc-name">Développer la présence en ligne de l&#x27;organisation</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Travailler en mode projet</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Analyser les objectifs et les modalités d&#x27;organisation d&#x27;un projet</li><li><span class="g-mark g-part" aria-label="partiel"></span>Planifier les activités</li><li><span class="g-mark g-part" aria-label="partiel"></span>Évaluer les indicateurs de suivi d&#x27;un projet et analyser les écarts</li></ul></div><div class="pc-group"><div class="pc-name">Mettre à disposition des utilisateurs un service informatique</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Réaliser les tests d&#x27;intégration et d&#x27;acceptation d&#x27;un service</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Déployer un service</li></ul></div><div class="pc-group pc-off"><div class="pc-name">Organiser son développement professionnel</div><span class="pc-none">Non mobilisée dans ce projet</span></div></div></div>
-      <div class="project-docs">
-        <a class="doc-link" href="docs/active-directory.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Documentation technique — Active Directory</span><span class="doc-link-meta">25 pages</span></a>
-      </div>
-    </article>
-
-    <article id="projet-glpi" class="project-card fade-in d2">
-      <div class="project-num">PROJET 03 — Gestion SI</div>
-      <div class="project-icon orange">🖥️</div>
-      <h2 class="project-title">GLPI sur Debian</h2>
-      <p class="project-subtitle">Gestion de parc et helpdesk relié à l'Active Directory</p>
-      <p class="project-desc">
+      </p><div class="tags">
+<span class="tag active">Windows Server 2022</span>
+<span class="tag active">AD DS</span>
+<span class="tag active">GPO</span>
+<span class="tag">DNS</span>
+<span class="tag">DHCP</span>
+<span class="tag">AGDLP</span>
+</div><span aria-hidden="true" class="card-more">Voir le projet →</span></article>
+<article class="project-card fade-in d2 project-summary" id="projet-glpi"><div class="project-num">PROJET 03 — Gestion SI</div><div class="project-icon orange">🖥️</div><h2 class="project-title"><a class="card-link" href="projet-glpi.html">GLPI sur Debian</a></h2><p class="project-subtitle">Gestion de parc et helpdesk relié à l'Active Directory</p><p class="project-desc">
         Déploiement de GLPI 11 sur un serveur Debian 13 dédié, publié en HTTPS. Les utilisateurs se connectent avec leur compte Active Directory et l'inventaire des postes remonte automatiquement grâce à GLPI Agent.
-      </p>
-      <div class="tags">
-        <span class="tag active">GLPI 11</span>
-        <span class="tag active">Debian 13</span>
-        <span class="tag active">LDAP</span>
-        <span class="tag">Apache</span>
-        <span class="tag">PHP 8.4</span>
-        <span class="tag">MariaDB</span>
-      </div>
-      <ul class="project-tasks">
-        <li>Installation de Debian 13 en mode serveur, adresse IP fixe, enregistrement DNS</li>
-        <li>Pile Apache 2.4, PHP-FPM 8.4 et MariaDB, base de données dédiée</li>
-        <li>Arborescence sécurisée : configuration et données hors de la racine web</li>
-        <li>Publication en HTTPS sur glpi.sisr.lan</li>
-        <li>Authentification Active Directory (LDAP) et attribution automatique des profils</li>
-        <li>Inventaire automatique des postes avec GLPI Agent</li>
-        <li>Sauvegarde et restauration, cahier de recette</li>
-        <li>Guide utilisateur pour les utilisateurs, techniciens et administrateurs</li>
-      </ul>
-      <div class="pc-block"><div class="pc-head"><span class="pc-title">Compétences du bloc 1</span><span class="pc-count">12 couvertes · 1 partielle sur 23</span><a class="pc-link" href="grille-e5.html">Voir la grille E5 →</a></div><div class="pc-grid"><div class="pc-group pc-off"><div class="pc-name">Rendre compte d&#x27;un travail en équipe</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Gérer le patrimoine informatique</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Recenser et identifier les ressources numériques</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Exploiter des référentiels, normes et standards</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Mettre en place et vérifier les niveaux d&#x27;habilitation associés à un service</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Vérifier les conditions de la continuité d&#x27;un service informatique</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Gérer des sauvegardes</li></ul></div><div class="pc-group"><div class="pc-name">Répondre aux incidents et aux demandes d&#x27;assistance et d&#x27;évolution</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Collecter, suivre et orienter des demandes</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Traiter des demandes concernant les services réseau et système, applicatifs</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Traiter des demandes concernant les applications</li></ul></div><div class="pc-group pc-off"><div class="pc-name">Développer la présence en ligne de l&#x27;organisation</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Travailler en mode projet</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Analyser les objectifs et les modalités d&#x27;organisation d&#x27;un projet</li><li><span class="g-mark g-part" aria-label="partiel"></span>Évaluer les indicateurs de suivi d&#x27;un projet et analyser les écarts</li></ul></div><div class="pc-group"><div class="pc-name">Mettre à disposition des utilisateurs un service informatique</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Réaliser les tests d&#x27;intégration et d&#x27;acceptation d&#x27;un service</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Déployer un service</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Accompagner les utilisateurs dans la mise en place d&#x27;un service</li></ul></div><div class="pc-group pc-off"><div class="pc-name">Organiser son développement professionnel</div><span class="pc-none">Non mobilisée dans ce projet</span></div></div></div>
-      <div class="project-docs">
-        <a class="doc-link" href="docs/glpi-installation-debian.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Documentation d'installation — GLPI sur Debian</span><span class="doc-link-meta">25 pages</span></a>
-        <a class="doc-link" href="docs/glpi-guide-utilisateur.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Guide utilisateur — Utiliser GLPI au quotidien</span><span class="doc-link-meta">11 pages</span></a>
-      </div>
-    </article>
-
-    <article id="projet-schema" class="project-card fade-in d3">
-      <div class="project-num">PROJET 04 — Architecture</div>
-      <div class="project-icon green">🌐</div>
-      <h2 class="project-title">Schéma de réseau</h2>
-      <p class="project-subtitle">Architecture et documentation réseau</p>
-      <p class="project-desc">
+      </p><div class="tags">
+<span class="tag active">GLPI 11</span>
+<span class="tag active">Debian 13</span>
+<span class="tag active">LDAP</span>
+<span class="tag">Apache</span>
+<span class="tag">PHP 8.4</span>
+<span class="tag">MariaDB</span>
+</div><span aria-hidden="true" class="card-more">Voir le projet →</span></article>
+<article class="project-card fade-in d3 project-summary" id="projet-schema"><div class="project-num">PROJET 04 — Architecture</div><div class="project-icon green">🌐</div><h2 class="project-title"><a class="card-link" href="projet-schema.html">Schéma de réseau</a></h2><p class="project-subtitle">Architecture et documentation réseau</p><p class="project-desc">
         Conception et documentation d'une architecture réseau d'entreprise. Modélisation des équipements, des flux et des zones de sécurité.
-      </p>
-      <div class="tags">
-        <span class="tag active">Cisco Packet Tracer</span>
-        <span class="tag active">VLAN</span>
-        <span class="tag">Adressage IP</span>
-        <span class="tag">Documentation</span>
-      </div>
-      <ul class="project-tasks">
-        <li>Analyse des besoins et conception de l'architecture</li>
-        <li>Modélisation des équipements (routeurs, switchs, serveurs)</li>
-        <li>Plan d'adressage IP et segmentation VLAN</li>
-        <li>Définition des zones de sécurité (LAN, DMZ, WAN)</li>
-        <li>Documentation technique et schémas Visio/Draw.io</li>
-      </ul>
-    <div class="pc-block"><div class="pc-head"><span class="pc-title">Compétences du bloc 1</span><span class="pc-count">2 couvertes sur 23</span><a class="pc-link" href="grille-e5.html">Voir la grille E5 →</a></div><div class="pc-grid"><div class="pc-group pc-off"><div class="pc-name">Rendre compte d&#x27;un travail en équipe</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Gérer le patrimoine informatique</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Recenser et identifier les ressources numériques</li></ul></div><div class="pc-group pc-off"><div class="pc-name">Répondre aux incidents et aux demandes d&#x27;assistance et d&#x27;évolution</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group pc-off"><div class="pc-name">Développer la présence en ligne de l&#x27;organisation</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Travailler en mode projet</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Analyser les objectifs et les modalités d&#x27;organisation d&#x27;un projet</li></ul></div><div class="pc-group pc-off"><div class="pc-name">Mettre à disposition des utilisateurs un service informatique</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group pc-off"><div class="pc-name">Organiser son développement professionnel</div><span class="pc-none">Non mobilisée dans ce projet</span></div></div></div>
-      </article>
-
-    <article id="projet-vlan" class="project-card fade-in d3">
-      <div class="project-num">PROJET 05 — Switching</div>
-      <div class="project-icon blue">🔀</div>
-      <h2 class="project-title">Configuration Switch (pfSense)</h2>
-      <p class="project-subtitle">Gestion des VLANs et du switching</p>
-      <p class="project-desc">
+      </p><div class="tags">
+<span class="tag active">Cisco Packet Tracer</span>
+<span class="tag active">VLAN</span>
+<span class="tag">Adressage IP</span>
+<span class="tag">Documentation</span>
+</div><span aria-hidden="true" class="card-more">Voir le projet →</span></article>
+<article class="project-card fade-in d3 project-summary" id="projet-vlan"><div class="project-num">PROJET 05 — Switching</div><div class="project-icon blue">🔀</div><h2 class="project-title"><a class="card-link" href="projet-vlan.html">Configuration Switch (pfSense)</a></h2><p class="project-subtitle">Gestion des VLANs et du switching</p><p class="project-desc">
         Segmentation du réseau en VLANs et routage entre eux par pfSense, avec un filtrage propre à chaque VLAN.
-      </p>
-      <div class="tags">
-        <span class="tag active">VLAN</span>
-        <span class="tag active">Trunk</span>
-        <span class="tag active">pfSense</span>
-        <span class="tag">802.1Q</span>
-      </div>
-      <ul class="project-tasks">
-        <li>Configuration des VLANs (802.1Q) via pfSense</li>
-        <li>Mise en place des ports trunk et access sur les switchs managés</li>
-        <li>Inter-VLAN routing via pfSense (router-on-a-stick)</li>
-        <li>Règles de firewall par VLAN pour isolation des réseaux</li>
-      </ul>
-    <div class="pc-block"><div class="pc-head"><span class="pc-title">Compétences du bloc 1</span><span class="pc-count">2 couvertes sur 23</span><a class="pc-link" href="grille-e5.html">Voir la grille E5 →</a></div><div class="pc-grid"><div class="pc-group pc-off"><div class="pc-name">Rendre compte d&#x27;un travail en équipe</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Gérer le patrimoine informatique</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Exploiter des référentiels, normes et standards</li></ul></div><div class="pc-group pc-off"><div class="pc-name">Répondre aux incidents et aux demandes d&#x27;assistance et d&#x27;évolution</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group pc-off"><div class="pc-name">Développer la présence en ligne de l&#x27;organisation</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group pc-off"><div class="pc-name">Travailler en mode projet</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Mettre à disposition des utilisateurs un service informatique</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Déployer un service</li></ul></div><div class="pc-group pc-off"><div class="pc-name">Organiser son développement professionnel</div><span class="pc-none">Non mobilisée dans ce projet</span></div></div></div>
-      </article>
-
-    <article id="projet-veille" class="project-card wide fade-in d3">
-      <div class="project-num">PROJET 06 — Développement professionnel</div>
-      <div class="project-body-split">
-        <div>
-          <div class="project-icon violet">📡</div>
-          <h2 class="project-title">Veille technologique automatisée</h2>
-          <p class="project-subtitle">Réseau et cybersécurité, mise à jour chaque matin</p>
-          <p class="project-desc">
+      </p><div class="tags">
+<span class="tag active">VLAN</span>
+<span class="tag active">Trunk</span>
+<span class="tag active">pfSense</span>
+<span class="tag">802.1Q</span>
+</div><span aria-hidden="true" class="card-more">Voir le projet →</span></article>
+<article class="project-card fade-in d3 project-summary" id="projet-veille"><div class="project-num">PROJET 06 — Développement professionnel</div><div class="project-icon violet">📡</div><h2 class="project-title"><a class="card-link" href="projet-veille.html">Veille technologique automatisée</a></h2><p class="project-subtitle">Réseau et cybersécurité, mise à jour chaque matin</p><p class="project-desc">
             Veille sur les matériels réseau et les cyberattaques en France, publiée sur ce portfolio. Un script Python lancé chaque jour par GitHub Actions lit les flux RSS de sources fiables (CERT-FR, ZATAZ, IT-Connect…) et met à jour la page tout seul. Mes analyses personnelles complètent ce fil d'actualité.
-          </p>
-          <div class="tags">
-            <span class="tag active">Python</span>
-            <span class="tag active">GitHub Actions</span>
-            <span class="tag active">RSS / Atom</span>
-            <span class="tag">GitHub Pages</span>
-            <span class="tag">CERT-FR</span>
-            <span class="tag">Git</span>
-          </div>
-          <div class="project-docs">
-            <a class="doc-link" href="veille.html"><span class="doc-link-type web">WEB</span><span class="doc-link-name">Page Veille — actualités et analyses</span><span class="doc-link-meta">Matériels réseau · Cyberattaques France</span></a>
-            <a class="doc-link" href="veille-doc.html"><span class="doc-link-type web">WEB</span><span class="doc-link-name">Documentation technique — Veille automatisée</span><span class="doc-link-meta">Architecture · procédure · tests · sécurité</span></a>
-          </div>
-        </div>
-        <ul class="project-tasks">
-          <li>Méthode régulière : survol quotidien du fil, analyse approfondie chaque semaine, flux organisés dans un agrégateur (OPML)</li>
-          <li>Choix de 7 sources selon leur fiabilité : CERT-FR, ZATAZ, IT-Connect, Le Monde Informatique, Network World</li>
-          <li>Script Python sans dépendance : lecture des flux RSS et Atom, filtrage par mots-clés, tri et dédoublonnage</li>
-          <li>Planification quotidienne avec GitHub Actions et publication automatique sur GitHub Pages</li>
-          <li>Sécurité : échappement du contenu externe (XSS), liens filtrés, droits limités du workflow</li>
-          <li>Tests avec des flux d'essai : RSS, Atom, source en panne, article hors sujet, caractères spéciaux</li>
-          <li>Analyses personnelles : Wi-Fi 7 et 8, réseaux d'entreprise, ransomware, NIS 2 et Cyber Resilience Act</li>
-          <li>Documentation technique publiée sur le portfolio</li>
-        </ul>
-      </div>
-    <div class="pc-block"><div class="pc-head"><span class="pc-title">Compétences du bloc 1</span><span class="pc-count">6 couvertes sur 23</span><a class="pc-link" href="grille-e5.html">Voir la grille E5 →</a></div><div class="pc-grid"><div class="pc-group pc-off"><div class="pc-name">Rendre compte d&#x27;un travail en équipe</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group pc-off"><div class="pc-name">Gérer le patrimoine informatique</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group pc-off"><div class="pc-name">Répondre aux incidents et aux demandes d&#x27;assistance et d&#x27;évolution</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Développer la présence en ligne de l&#x27;organisation</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Participer à l&#x27;évolution d&#x27;un site Web exploitant les données de l&#x27;organisation</li></ul></div><div class="pc-group"><div class="pc-name">Travailler en mode projet</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Analyser les objectifs et les modalités d&#x27;organisation d&#x27;un projet</li></ul></div><div class="pc-group"><div class="pc-name">Mettre à disposition des utilisateurs un service informatique</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Réaliser les tests d&#x27;intégration et d&#x27;acceptation d&#x27;un service</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Déployer un service</li></ul></div><div class="pc-group"><div class="pc-name">Organiser son développement professionnel</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Mettre en place son environnement d&#x27;apprentissage personnel</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Mettre en œuvre des outils et stratégies de veille informationnelle</li></ul></div></div></div>
-      </article>
-
-    <article id="projet-cle-usb" class="project-card wide fade-in d3">
-      <div class="project-num">PROJET 07 — Support et dépannage</div>
-      <div class="project-body-split">
-        <div>
-          <div class="project-icon orange">🔑</div>
-          <h2 class="project-title">Clé USB bootable multiboot</h2>
-          <p class="project-subtitle">Intervention sur site chez les particuliers</p>
-          <p class="project-desc">
+          </p><div class="tags">
+<span class="tag active">Python</span>
+<span class="tag active">GitHub Actions</span>
+<span class="tag active">RSS / Atom</span>
+<span class="tag">GitHub Pages</span>
+<span class="tag">CERT-FR</span>
+<span class="tag">Git</span>
+</div><span aria-hidden="true" class="card-more">Voir le projet →</span></article>
+<article class="project-card fade-in d3 project-summary" id="projet-cle-usb"><div class="project-num">PROJET 07 — Support et dépannage</div><div class="project-icon orange">🔑</div><h2 class="project-title"><a class="card-link" href="projet-cle-usb.html">Clé USB bootable multiboot</a></h2><p class="project-subtitle">Intervention sur site chez les particuliers</p><p class="project-desc">
             Clé USB multiboot sous Ventoy pour les dépannages à domicile : réinitialisation d'un mot de passe Windows oublié, installation ou réinstallation de Windows, et une trousse d'outils de diagnostic (Hiren's BootCD PE, Clonezilla, GParted Live, MemTest86, Kaspersky Rescue Disk, Kudu) réunis sur un seul support, sans reformater à chaque ajout d'ISO.
-          </p>
-          <div class="tags">
-            <span class="tag active">Ventoy</span>
-            <span class="tag active">chntpw</span>
-            <span class="tag active">Windows 10 / 11</span>
-            <span class="tag">Hiren's BootCD PE</span>
-            <span class="tag">Clonezilla</span>
-            <span class="tag">Kudu</span>
-          </div>
-          <div class="project-docs">
-            <a class="doc-link" href="docs/cle-usb-bootable.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Documentation d'installation et d'utilisation — Clé USB bootable</span><span class="doc-link-meta">5 pages</span></a>
-          </div>
-        </div>
-        <ul class="project-tasks">
-          <li>Installation de Ventoy sur une clé de 64 Go pour démarrer plusieurs ISO sans reformater</li>
-          <li>Récupération et organisation des images ISO (Windows, outils de dépannage)</li>
-          <li>Réinitialisation d'un mot de passe de session Windows oublié avec chntpw (hive SAM)</li>
-          <li>Installation et réinstallation complète de Windows depuis la clé</li>
-          <li>Diagnostic et dépannage avec Hiren's BootCD PE, GParted Live, MemTest86, Kaspersky Rescue Disk</li>
-          <li>Clonage et sauvegarde de disque avec Clonezilla avant toute intervention à risque</li>
-          <li>Bonnes pratiques : accord client, sauvegarde préalable, sécurisation de la clé</li>
-        </ul>
-      </div>
-      </article>
-
-    <article id="projet-monitoring" class="project-card wide fade-in d3">
-      <div class="project-num">PROJET 08 — Supervision &amp; Sécurité</div>
-      <div class="project-body-split">
-        <div>
-          <div class="project-icon green">📈</div>
-          <h2 class="project-title">Sonde de supervision sous Kali Linux</h2>
-          <p class="project-subtitle">Disponibilité, inventaire et détection d'intrusion du réseau local</p>
-          <p class="project-desc">
+          </p><div class="tags">
+<span class="tag active">Ventoy</span>
+<span class="tag active">chntpw</span>
+<span class="tag active">Windows 10 / 11</span>
+<span class="tag">Hiren's BootCD PE</span>
+<span class="tag">Clonezilla</span>
+<span class="tag">Kudu</span>
+</div><span aria-hidden="true" class="card-more">Voir le projet →</span></article>
+<article class="project-card fade-in d3 project-summary" id="projet-monitoring"><div class="project-num">PROJET 08 — Supervision &amp; Sécurité</div><div class="project-icon green">📈</div><h2 class="project-title"><a class="card-link" href="projet-monitoring.html">Sonde de supervision sous Kali Linux</a></h2><p class="project-subtitle">Disponibilité, inventaire et détection d'intrusion du réseau local</p><p class="project-desc">
             Sonde virtuelle construite à partir de l'ISO Kali Linux 2026.3 : installation entièrement automatisée, outils de Kali (nmap, tcpdump, Wireshark) complétés par Suricata, Prometheus, Grafana, darkstat, arpwatch et vnStat. Elle surveille la box, le DNS et Internet, inventorie les appareils, détecte les balayages et alerte en moins de trois minutes. Recette de 20 tests, tous validés.
-          </p>
-          <div class="tags">
-            <span class="tag active">Kali Linux</span>
-            <span class="tag active">Suricata</span>
-            <span class="tag active">Prometheus</span>
-            <span class="tag active">Grafana</span>
-            <span class="tag">nmap</span>
-            <span class="tag">nftables</span>
-            <span class="tag">VirtualBox</span>
-          </div>
-          <div class="project-docs">
-            <a class="doc-link" href="docs/monitoring-kali-installation.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Documentation d'installation — Sonde de supervision Kali</span><span class="doc-link-meta">24 pages</span></a>
-            <a class="doc-link" href="docs/monitoring-kali-guide-utilisateur.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Guide utilisateur — Surveiller son réseau avec la sonde</span><span class="doc-link-meta">13 pages</span></a>
-            <a class="doc-link" href="https://github.com/yannschneider/Portfolio/tree/main/projets/monitoring-kali" target="_blank" rel="noopener"><span class="doc-link-type web">CODE</span><span class="doc-link-name">Scripts et fichiers de configuration</span><span class="doc-link-meta">preseed · provisionnement · recette</span></a>
-          </div>
-        </div>
-        <ul class="project-tasks">
-          <li>Installation de Kali sans intervention par fichier preseed servi en HTTP, compte et clé SSH déposés automatiquement</li>
-          <li>VM à deux cartes : NAT pour l'administration, pont sur le réseau surveillé</li>
-          <li>Suricata avec 53 600 règles Emerging Threats et des règles locales (balayages, protocoles en clair)</li>
-          <li>Prometheus et blackbox_exporter : ping, DNS et HTTP toutes les 30 s, 10 règles d'alerte</li>
-          <li>Découverte nmap toutes les 15 min, inventaire horodaté des appareils, arpwatch</li>
-          <li>Tableau de bord Grafana provisionné par fichiers, trafic par appareil avec darkstat</li>
-          <li>Pare-feu nftables : aucun service exposé sur le réseau, adresses MAC minimisées (RGPD)</li>
-          <li>Sauvegarde quotidienne testée, planning, indicateurs et analyse des écarts, recette 20/20</li>
-        </ul>
-      </div>
-    <div class="pc-block"><div class="pc-head"><span class="pc-title">Compétences du bloc 1</span><span class="pc-count">14 couvertes · 1 partielle sur 23</span><a class="pc-link" href="grille-e5.html">Voir la grille E5 →</a></div><div class="pc-grid"><div class="pc-group pc-off"><div class="pc-name">Rendre compte d&#x27;un travail en équipe</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Gérer le patrimoine informatique</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Recenser et identifier les ressources numériques</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Exploiter des référentiels, normes et standards</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Mettre en place et vérifier les niveaux d&#x27;habilitation associés à un service</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Vérifier les conditions de la continuité d&#x27;un service informatique</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Gérer des sauvegardes</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Vérifier le respect des règles d&#x27;utilisation des ressources numériques</li></ul></div><div class="pc-group"><div class="pc-name">Répondre aux incidents et aux demandes d&#x27;assistance et d&#x27;évolution</div><ul><li><span class="g-mark g-part" aria-label="partiel"></span>Collecter, suivre et orienter des demandes</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Traiter des demandes concernant les services réseau et système, applicatifs</li></ul></div><div class="pc-group pc-off"><div class="pc-name">Développer la présence en ligne de l&#x27;organisation</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Travailler en mode projet</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Analyser les objectifs et les modalités d&#x27;organisation d&#x27;un projet</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Planifier les activités</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Évaluer les indicateurs de suivi d&#x27;un projet et analyser les écarts</li></ul></div><div class="pc-group"><div class="pc-name">Mettre à disposition des utilisateurs un service informatique</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Réaliser les tests d&#x27;intégration et d&#x27;acceptation d&#x27;un service</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Déployer un service</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Accompagner les utilisateurs dans la mise en place d&#x27;un service</li></ul></div><div class="pc-group"><div class="pc-name">Organiser son développement professionnel</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Mettre en place son environnement d&#x27;apprentissage personnel</li></ul></div></div></div>
-      </article>
-
-    <article id="projet-durcissement" class="project-card wide fade-in d3">
-      <div class="project-num">PROJET 09 — Cybersécurité</div>
-      <div class="project-body-split">
-        <div>
-          <div class="project-icon red">🔐</div>
-          <h2 class="project-title">Durcissement d'un serveur Linux</h2>
-          <p class="project-subtitle">Sécuriser un serveur Debian avant sa mise en production</p>
-          <p class="project-desc">
+          </p><div class="tags">
+<span class="tag active">Kali Linux</span>
+<span class="tag active">Suricata</span>
+<span class="tag active">Prometheus</span>
+<span class="tag active">Grafana</span>
+<span class="tag">nmap</span>
+<span class="tag">nftables</span>
+<span class="tag">VirtualBox</span>
+</div><span aria-hidden="true" class="card-more">Voir le projet →</span></article>
+<article class="project-card fade-in d3 project-summary" id="projet-durcissement"><div class="project-num">PROJET 09 — Cybersécurité</div><div class="project-icon red">🔐</div><h2 class="project-title"><a class="card-link" href="projet-durcissement.html">Durcissement d'un serveur Linux</a></h2><p class="project-subtitle">Sécuriser un serveur Debian avant sa mise en production</p><p class="project-desc">
             Une PME installe un serveur Debian 13 pour ses services internes. Avant la mise en production, j'ai réduit sa surface d'attaque : compte d'administration dédié, politique de mots de passe, SSH par clé uniquement, pare-feu, fail2ban et mises à jour automatiques. Chaque mesure a été vérifiée depuis un second poste, puis le résultat mesuré avec un audit Lynis.
-          </p>
-          <div class="tags">
-            <span class="tag active">Debian 13</span>
-            <span class="tag active">OpenSSH</span>
-            <span class="tag active">ufw</span>
-            <span class="tag active">fail2ban</span>
-            <span class="tag">PAM</span>
-            <span class="tag">Lynis</span>
-            <span class="tag">VirtualBox</span>
-          </div>
-          <div class="project-docs">
-            <a class="doc-link" href="docs/durcissement-linux-installation.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Documentation d'installation — Durcissement du serveur</span><span class="doc-link-meta">29 pages</span></a>
-            <a class="doc-link" href="docs/durcissement-linux-guide-utilisateur.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Guide d'exploitation — Administrer le serveur durci</span><span class="doc-link-meta">10 pages</span></a>
-          </div>
-        </div>
-        <ul class="project-tasks">
-          <li>Maquette VirtualBox : serveur Debian 13 et poste client sur un réseau isolé, instantané avant durcissement</li>
-          <li>Partitions /home, /var et /tmp séparées, compte root verrouillé</li>
-          <li>Compte d'administration sudo dédié, politique de mots de passe (pam_pwquality)</li>
-          <li>Verrouillage du compte après 5 échecs (pam_faillock)</li>
-          <li>SSH par clé ED25519 uniquement : root et mots de passe refusés, AllowUsers</li>
-          <li>Pare-feu ufw en refus par défaut, seul SSH autorisé</li>
-          <li>fail2ban : bannissement après 3 échecs, testé par une attaque simulée</li>
-          <li>Mises à jour de sécurité automatiques, services inutiles désactivés</li>
-          <li>Audit Lynis (indice 70/100), tests rejoués après redémarrage</li>
-        </ul>
-      </div>
-      <div class="project-shots">
-        <figure><img src="img/durcissement/ssh-tests.webp" alt="Tests SSH depuis le poste client : clé acceptée, mot de passe et root refusés" loading="lazy"><figcaption>SSH : clé acceptée, mot de passe et root refusés</figcaption></figure>
-        <figure><img src="img/durcissement/fail2ban-attaque.webp" alt="Attaque simulée : l'adresse du client est bannie par fail2ban" loading="lazy"><figcaption>fail2ban bannit l'attaquant après 3 échecs</figcaption></figure>
-        <figure><img src="img/durcissement/ufw.webp" alt="Pare-feu ufw : refus par défaut, seul le port 22 ouvert" loading="lazy"><figcaption>ufw : tout est bloqué sauf SSH</figcaption></figure>
-        <figure><img src="img/durcissement/lynis.webp" alt="Audit Lynis : indice de durcissement 70" loading="lazy"><figcaption>Audit Lynis : indice 70/100</figcaption></figure>
-      </div>
-    <div class="pc-block"><div class="pc-head"><span class="pc-title">Compétences du bloc 1</span><span class="pc-count">11 couvertes · 3 partielles sur 23</span><a class="pc-link" href="grille-e5.html">Voir la grille E5 →</a></div><div class="pc-grid"><div class="pc-group pc-off"><div class="pc-name">Rendre compte d&#x27;un travail en équipe</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Gérer le patrimoine informatique</div><ul><li><span class="g-mark g-part" aria-label="partiel"></span>Recenser et identifier les ressources numériques</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Exploiter des référentiels, normes et standards</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Mettre en place et vérifier les niveaux d&#x27;habilitation associés à un service</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Vérifier les conditions de la continuité d&#x27;un service informatique</li><li><span class="g-mark g-part" aria-label="partiel"></span>Gérer des sauvegardes</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Vérifier le respect des règles d&#x27;utilisation des ressources numériques</li></ul></div><div class="pc-group"><div class="pc-name">Répondre aux incidents et aux demandes d&#x27;assistance et d&#x27;évolution</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Traiter des demandes concernant les services réseau et système, applicatifs</li></ul></div><div class="pc-group pc-off"><div class="pc-name">Développer la présence en ligne de l&#x27;organisation</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Travailler en mode projet</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Analyser les objectifs et les modalités d&#x27;organisation d&#x27;un projet</li><li><span class="g-mark g-part" aria-label="partiel"></span>Planifier les activités</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Évaluer les indicateurs de suivi d&#x27;un projet et analyser les écarts</li></ul></div><div class="pc-group"><div class="pc-name">Mettre à disposition des utilisateurs un service informatique</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Réaliser les tests d&#x27;intégration et d&#x27;acceptation d&#x27;un service</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Déployer un service</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Accompagner les utilisateurs dans la mise en place d&#x27;un service</li></ul></div><div class="pc-group"><div class="pc-name">Organiser son développement professionnel</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Mettre en place son environnement d&#x27;apprentissage personnel</li></ul></div></div></div>
-    </article>
-  </div>
-
-  <div class="docs-library fade-in d3">
-    <h2 class="docs-library-title">Documentations techniques</h2>
-    <p class="docs-library-lead">Toutes mes documentations rédigées pendant le BTS, au format des documents remis en entreprise : contexte, procédure pas à pas, tests et fiche de réalisation.</p>
-    <div class="docs-library-grid">
-      <a class="doc-link" href="docs/pfsense-installation.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">pfSense — Pare-feu et VPN</span><span class="doc-link-meta">Bloc 2 · pfSense CE 2.9 · OpenVPN · IPsec · 28 pages</span></a>
-      <a class="doc-link" href="docs/pfsense-guide-utilisateur.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Guide utilisateur VPN</span><span class="doc-link-meta">Bloc 1 · Utilisateurs et techniciens · 9 pages</span></a>
-      <a class="doc-link" href="docs/active-directory.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Mise en place d'un domaine Active Directory</span><span class="doc-link-meta">Bloc 2 · Windows Server 2022 · 25 pages</span></a>
-      <a class="doc-link" href="docs/glpi-installation-debian.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Déploiement de GLPI sur Debian</span><span class="doc-link-meta">Bloc 2 · GLPI 11 · Debian 13 · 25 pages</span></a>
-      <a class="doc-link" href="docs/glpi-guide-utilisateur.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Guide utilisateur GLPI</span><span class="doc-link-meta">Bloc 1 · Support utilisateurs · 11 pages</span></a>
-      <a class="doc-link" href="veille-doc.html"><span class="doc-link-type web">WEB</span><span class="doc-link-name">Veille automatisée</span><span class="doc-link-meta">Bloc 1 · GitHub Actions · Python</span></a>
-      <a class="doc-link" href="docs/cle-usb-bootable.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Clé USB bootable multiboot</span><span class="doc-link-meta">Bloc 1 · Ventoy · chntpw · 5 pages</span></a>
-      <a class="doc-link" href="docs/monitoring-kali-installation.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Sonde de supervision sous Kali Linux</span><span class="doc-link-meta">Bloc 2 · Suricata · Prometheus · Grafana · 24 pages</span></a>
-      <a class="doc-link" href="docs/monitoring-kali-guide-utilisateur.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Guide utilisateur de la sonde</span><span class="doc-link-meta">Bloc 1 · Alertes et analyse de trafic · 13 pages</span></a>
-      <a class="doc-link" href="docs/durcissement-linux-installation.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Durcissement d'un serveur Linux</span><span class="doc-link-meta">Bloc 2 · Debian 13 · SSH · ufw · fail2ban · 29 pages</span></a>
-      <a class="doc-link" href="docs/durcissement-linux-guide-utilisateur.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Guide d'exploitation du serveur durci</span><span class="doc-link-meta">Bloc 1 · Administrateurs · 10 pages</span></a>
-    </div>
-  </div>
-
-  <nav class="page-nav" aria-label="Pages voisines">
-    <a class="prev" href="profil.html"><small>← Précédent</small><span>Profil</span></a>
-    <a class="next" href="grille-e5.html"><small>Suivant →</small><span>Grille E5</span></a>
-  </nav>
+          </p><div class="tags">
+<span class="tag active">Debian 13</span>
+<span class="tag active">OpenSSH</span>
+<span class="tag active">ufw</span>
+<span class="tag active">fail2ban</span>
+<span class="tag">PAM</span>
+<span class="tag">Lynis</span>
+<span class="tag">VirtualBox</span>
+</div><span aria-hidden="true" class="card-more">Voir le projet →</span></article>
+</div>
+<div class="docs-library fade-in d3">
+<h2 class="docs-library-title">Documentations techniques</h2>
+<p class="docs-library-lead">Toutes mes documentations rédigées pendant le BTS, au format des documents remis en entreprise : contexte, procédure pas à pas, tests et fiche de réalisation.</p>
+<div class="docs-library-grid">
+<a class="doc-link" href="docs/pfsense-installation.pdf" rel="noopener" target="_blank"><span class="doc-link-type">PDF</span><span class="doc-link-name">pfSense — Pare-feu et VPN</span><span class="doc-link-meta">Bloc 2 · pfSense CE 2.9 · OpenVPN · IPsec · 28 pages</span></a>
+<a class="doc-link" href="docs/pfsense-guide-utilisateur.pdf" rel="noopener" target="_blank"><span class="doc-link-type">PDF</span><span class="doc-link-name">Guide utilisateur VPN</span><span class="doc-link-meta">Bloc 1 · Utilisateurs et techniciens · 9 pages</span></a>
+<a class="doc-link" href="docs/active-directory.pdf" rel="noopener" target="_blank"><span class="doc-link-type">PDF</span><span class="doc-link-name">Mise en place d'un domaine Active Directory</span><span class="doc-link-meta">Bloc 2 · Windows Server 2022 · 25 pages</span></a>
+<a class="doc-link" href="docs/glpi-installation-debian.pdf" rel="noopener" target="_blank"><span class="doc-link-type">PDF</span><span class="doc-link-name">Déploiement de GLPI sur Debian</span><span class="doc-link-meta">Bloc 2 · GLPI 11 · Debian 13 · 25 pages</span></a>
+<a class="doc-link" href="docs/glpi-guide-utilisateur.pdf" rel="noopener" target="_blank"><span class="doc-link-type">PDF</span><span class="doc-link-name">Guide utilisateur GLPI</span><span class="doc-link-meta">Bloc 1 · Support utilisateurs · 11 pages</span></a>
+<a class="doc-link" href="veille-doc.html"><span class="doc-link-type web">WEB</span><span class="doc-link-name">Veille automatisée</span><span class="doc-link-meta">Bloc 1 · GitHub Actions · Python</span></a>
+<a class="doc-link" href="docs/cle-usb-bootable.pdf" rel="noopener" target="_blank"><span class="doc-link-type">PDF</span><span class="doc-link-name">Clé USB bootable multiboot</span><span class="doc-link-meta">Bloc 1 · Ventoy · chntpw · 5 pages</span></a>
+<a class="doc-link" href="docs/monitoring-kali-installation.pdf" rel="noopener" target="_blank"><span class="doc-link-type">PDF</span><span class="doc-link-name">Sonde de supervision sous Kali Linux</span><span class="doc-link-meta">Bloc 2 · Suricata · Prometheus · Grafana · 24 pages</span></a>
+<a class="doc-link" href="docs/monitoring-kali-guide-utilisateur.pdf" rel="noopener" target="_blank"><span class="doc-link-type">PDF</span><span class="doc-link-name">Guide utilisateur de la sonde</span><span class="doc-link-meta">Bloc 1 · Alertes et analyse de trafic · 13 pages</span></a>
+<a class="doc-link" href="docs/durcissement-linux-installation.pdf" rel="noopener" target="_blank"><span class="doc-link-type">PDF</span><span class="doc-link-name">Durcissement d'un serveur Linux</span><span class="doc-link-meta">Bloc 2 · Debian 13 · SSH · ufw · fail2ban · 29 pages</span></a>
+<a class="doc-link" href="docs/durcissement-linux-guide-utilisateur.pdf" rel="noopener" target="_blank"><span class="doc-link-type">PDF</span><span class="doc-link-name">Guide d'exploitation du serveur durci</span><span class="doc-link-meta">Bloc 1 · Administrateurs · 10 pages</span></a>
+</div>
+</div>
+<nav aria-label="Pages voisines" class="page-nav">
+<a class="prev" href="profil.html"><small>← Précédent</small><span>Profil</span></a>
+<a class="next" href="grille-e5.html"><small>Suivant →</small><span>Grille E5</span></a>
+</nav>
 </section>
 </main>
 <footer class="site-footer">
-  <div class="site-footer-inner">
-    <div class="footer-brand">YS.</div>
-    <div class="footer-copy">© 2026 Yann Schneider — Portfolio BTS SIO SISR</div>
-  </div>
+<div class="site-footer-inner">
+<div class="footer-brand">YS.</div>
+<div class="footer-copy">© 2026 Yann Schneider — Portfolio BTS SIO SISR</div>
+</div>
 </footer>
 <script src="script.js"></script>
 </body>

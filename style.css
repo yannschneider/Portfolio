@@ -708,3 +708,18 @@ section {
 .project-shots figure { margin: 0; background: #000; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; overflow: hidden; }
 .project-shots img { display: block; width: 100%; height: 150px; object-fit: cover; object-position: left top; }
 .project-shots figcaption { font-family: 'Space Mono', monospace; font-size: 0.72rem; color: #9fb3c8; padding: 0.5rem 0.7rem; background: rgba(255,255,255,0.03); }
+
+/* Pages projet : cartes cliquables et page dédiée */
+.project-summary { position: relative; cursor: pointer; display: flex; flex-direction: column; }
+.project-summary .card-link { color: inherit; text-decoration: none; }
+.project-summary .card-link::after { content: ''; position: absolute; inset: 0; border-radius: inherit; z-index: 1; }
+.project-summary .card-link:focus-visible { outline: none; }
+.project-summary:focus-within { border-color: var(--border-strong); box-shadow: var(--glow); }
+.project-summary .tags { margin-bottom: 1rem; }
+.card-more { margin-top: auto; font-family: 'Space Mono', monospace; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent, #00d4ff); }
+.project-summary:hover .card-more { text-decoration: underline; }
+.project-page .back-link { display: inline-block; margin-bottom: 1.25rem; font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--accent, #00d4ff); text-decoration: none; }
+.project-page .back-link:hover { text-decoration: underline; }
+.project-detail .project-card { transform: none; }
+.project-detail .project-card:hover { transform: none; }
+.project-detail { margin-top: 1rem; }

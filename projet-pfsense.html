@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>pfSense — Firewall & VPN — Yann Schneider</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Portfolio de Yann Schneider, étudiant en BTS SIO option SISR à EnsiTech Saint-Herblain.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="site-nav" aria-label="Navigation principale">
+  <div class="site-nav-inner">
+    <a class="nav-logo" href="index.html">Y<span>ann</span> Schneider</a>
+    <ul>
+      <li><a href="profil.html">Profil</a></li>
+      <li><a href="projets.html" aria-current="page">Projets</a></li>
+      <li><a href="grille-e5.html">Grille E5</a></li>
+      <li><a href="competences.html">Compétences</a></li>
+      <li><a href="veille.html">Veille</a></li>
+      <li><a href="cv.html">CV</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<section class="project-page" id="projet-pfsense">
+  <a class="back-link" href="projets.html">← Tous les projets</a>
+  <div class="section-label">02 — Réalisations</div>
+  <div class="project-detail">
+    <article class="project-card wide fade-in">
+<div class="project-num">PROJET 01 — Infrastructures &amp; Sécurité</div>
+<div class="project-body-split">
+<div>
+<div class="project-icon">🛡️</div>
+<h2 class="project-title">pfSense — Firewall &amp; VPN</h2>
+<p class="project-subtitle">Pare-feu du siège, DMZ et deux types de VPN</p>
+<p class="project-desc">
+            Mise en place d'un pare-feu pfSense CE 2.9 à trois zones (WAN, LAN, DMZ) avec une politique « tout est interdit sauf ce qui est autorisé », la publication d'un serveur web en DMZ, un VPN d'accès distant pour les nomades et un VPN site à site vers une agence.
+          </p>
+<div class="tags">
+<span class="tag active">pfSense CE 2.9</span>
+<span class="tag active">OpenVPN</span>
+<span class="tag active">IPsec IKEv2</span>
+<span class="tag">DMZ</span>
+<span class="tag">NAT</span>
+<span class="tag">PKI</span>
+</div>
+<div class="project-docs">
+<a class="doc-link" href="docs/pfsense-installation.pdf" rel="noopener" target="_blank"><span class="doc-link-type">PDF</span><span class="doc-link-name">Documentation d'installation — pfSense, pare-feu et VPN</span><span class="doc-link-meta">28 pages</span></a>
+<a class="doc-link" href="docs/pfsense-guide-utilisateur.pdf" rel="noopener" target="_blank"><span class="doc-link-type">PDF</span><span class="doc-link-name">Guide utilisateur — Travailler à distance avec le VPN</span><span class="doc-link-meta">9 pages</span></a>
+</div>
+</div>
+<ul class="project-tasks">
+<li>Installation de pfSense CE 2.9 avec le Netgate Installer, interfaces WAN / LAN / DMZ</li>
+<li>Matrice des flux, alias et règles de filtrage deny-all journalisées</li>
+<li>Isolement de la DMZ : aucun flux possible vers le LAN</li>
+<li>Publication du serveur web par redirection de ports (NAT)</li>
+<li>Résolveur DNS relié à l'Active Directory (zone sisr.lan)</li>
+<li>Autorité de certification interne, VPN OpenVPN avec certificat et mot de passe</li>
+<li>Révocation des accès VPN (liste de révocation)</li>
+<li>VPN IPsec IKEv2 site à site entre le siège et une agence</li>
+<li>Supervision, sauvegarde chiffrée, cahier de recette de 18 tests</li>
+</ul>
+</div>
+<div class="pc-block"><div class="pc-head"><span class="pc-title">Compétences du bloc 1</span><span class="pc-count">10 couvertes · 4 partielles sur 23</span><a class="pc-link" href="grille-e5.html">Voir la grille E5 →</a></div><div class="pc-grid"><div class="pc-group pc-off"><div class="pc-name">Rendre compte d'un travail en équipe</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Gérer le patrimoine informatique</div><ul><li><span aria-label="couvert" class="g-mark g-full">✓</span>Exploiter des référentiels, normes et standards</li><li><span aria-label="couvert" class="g-mark g-full">✓</span>Mettre en place et vérifier les niveaux d'habilitation associés à un service</li><li><span aria-label="couvert" class="g-mark g-full">✓</span>Vérifier les conditions de la continuité d'un service informatique</li><li><span aria-label="couvert" class="g-mark g-full">✓</span>Gérer des sauvegardes</li><li><span aria-label="couvert" class="g-mark g-full">✓</span>Vérifier le respect des règles d'utilisation des ressources numériques</li></ul></div><div class="pc-group"><div class="pc-name">Répondre aux incidents et aux demandes d'assistance et d'évolution</div><ul><li><span aria-label="partiel" class="g-mark g-part"></span>Collecter, suivre et orienter des demandes</li><li><span aria-label="couvert" class="g-mark g-full">✓</span>Traiter des demandes concernant les services réseau et système, applicatifs</li></ul></div><div class="pc-group"><div class="pc-name">Développer la présence en ligne de l'organisation</div><ul><li><span aria-label="partiel" class="g-mark g-part"></span>Participer à l'évolution d'un site Web exploitant les données de l'organisation</li></ul></div><div class="pc-group"><div class="pc-name">Travailler en mode projet</div><ul><li><span aria-label="couvert" class="g-mark g-full">✓</span>Analyser les objectifs et les modalités d'organisation d'un projet</li><li><span aria-label="partiel" class="g-mark g-part"></span>Planifier les activités</li><li><span aria-label="partiel" class="g-mark g-part"></span>Évaluer les indicateurs de suivi d'un projet et analyser les écarts</li></ul></div><div class="pc-group"><div class="pc-name">Mettre à disposition des utilisateurs un service informatique</div><ul><li><span aria-label="couvert" class="g-mark g-full">✓</span>Réaliser les tests d'intégration et d'acceptation d'un service</li><li><span aria-label="couvert" class="g-mark g-full">✓</span>Déployer un service</li><li><span aria-label="couvert" class="g-mark g-full">✓</span>Accompagner les utilisateurs dans la mise en place d'un service</li></ul></div><div class="pc-group pc-off"><div class="pc-name">Organiser son développement professionnel</div><span class="pc-none">Non mobilisée dans ce projet</span></div></div></div>
+</article>
+  </div>
+  <nav class="page-nav" aria-label="Projets voisins">
+    <a class="prev" href="projets.html"><small>← Retour</small><span>Tous les projets</span></a>
+    <a class="next" href="projet-ad.html"><small>Projet suivant →</small><span>Domaine Active Directory</span></a>
+  </nav>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-brand">YS.</div>
+    <div class="footer-copy">© 2026 Yann Schneider — Portfolio BTS SIO SISR</div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

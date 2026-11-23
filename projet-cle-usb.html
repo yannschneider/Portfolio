@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Clé USB bootable multiboot — Yann Schneider</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Portfolio de Yann Schneider, étudiant en BTS SIO option SISR à EnsiTech Saint-Herblain.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="site-nav" aria-label="Navigation principale">
+  <div class="site-nav-inner">
+    <a class="nav-logo" href="index.html">Y<span>ann</span> Schneider</a>
+    <ul>
+      <li><a href="profil.html">Profil</a></li>
+      <li><a href="projets.html" aria-current="page">Projets</a></li>
+      <li><a href="grille-e5.html">Grille E5</a></li>
+      <li><a href="competences.html">Compétences</a></li>
+      <li><a href="veille.html">Veille</a></li>
+      <li><a href="cv.html">CV</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<section class="project-page" id="projet-cle-usb">
+  <a class="back-link" href="projets.html">← Tous les projets</a>
+  <div class="section-label">02 — Réalisations</div>
+  <div class="project-detail">
+    <article class="project-card wide fade-in">
+<div class="project-num">PROJET 07 — Support et dépannage</div>
+<div class="project-body-split">
+<div>
+<div class="project-icon orange">🔑</div>
+<h2 class="project-title">Clé USB bootable multiboot</h2>
+<p class="project-subtitle">Intervention sur site chez les particuliers</p>
+<p class="project-desc">
+            Clé USB multiboot sous Ventoy pour les dépannages à domicile : réinitialisation d'un mot de passe Windows oublié, installation ou réinstallation de Windows, et une trousse d'outils de diagnostic (Hiren's BootCD PE, Clonezilla, GParted Live, MemTest86, Kaspersky Rescue Disk, Kudu) réunis sur un seul support, sans reformater à chaque ajout d'ISO.
+          </p>
+<div class="tags">
+<span class="tag active">Ventoy</span>
+<span class="tag active">chntpw</span>
+<span class="tag active">Windows 10 / 11</span>
+<span class="tag">Hiren's BootCD PE</span>
+<span class="tag">Clonezilla</span>
+<span class="tag">Kudu</span>
+</div>
+<div class="project-docs">
+<a class="doc-link" href="docs/cle-usb-bootable.pdf" rel="noopener" target="_blank"><span class="doc-link-type">PDF</span><span class="doc-link-name">Documentation d'installation et d'utilisation — Clé USB bootable</span><span class="doc-link-meta">5 pages</span></a>
+</div>
+</div>
+<ul class="project-tasks">
+<li>Installation de Ventoy sur une clé de 64 Go pour démarrer plusieurs ISO sans reformater</li>
+<li>Récupération et organisation des images ISO (Windows, outils de dépannage)</li>
+<li>Réinitialisation d'un mot de passe de session Windows oublié avec chntpw (hive SAM)</li>
+<li>Installation et réinstallation complète de Windows depuis la clé</li>
+<li>Diagnostic et dépannage avec Hiren's BootCD PE, GParted Live, MemTest86, Kaspersky Rescue Disk</li>
+<li>Clonage et sauvegarde de disque avec Clonezilla avant toute intervention à risque</li>
+<li>Bonnes pratiques : accord client, sauvegarde préalable, sécurisation de la clé</li>
+</ul>
+</div>
+</article>
+  </div>
+  <nav class="page-nav" aria-label="Projets voisins">
+    <a class="prev" href="projet-veille.html"><small>← Projet précédent</small><span>Veille technologique automatisée</span></a>
+    <a class="next" href="projet-monitoring.html"><small>Projet suivant →</small><span>Sonde de supervision sous Kali Linux</span></a>
+  </nav>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-brand">YS.</div>
+    <div class="footer-copy">© 2026 Yann Schneider — Portfolio BTS SIO SISR</div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
