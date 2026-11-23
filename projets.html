@@ -30,7 +30,7 @@
 <section>
   <div class="section-label">02 — Réalisations</div>
   <h1 class="section-title">Mes projets</h1>
-  <p class="section-lead">Huit projets réalisés pendant le BTS SIO SISR, du pare-feu au domaine Active Directory, jusqu'à ma veille technologique automatisée, ma clé USB d'intervention et ma sonde de supervision sous Kali Linux. Chaque projet documenté est accompagné de sa documentation technique en PDF.</p>
+  <p class="section-lead">Neuf projets réalisés pendant le BTS SIO SISR, du pare-feu au domaine Active Directory, jusqu'à ma veille technologique automatisée, ma clé USB d'intervention, ma sonde de supervision sous Kali Linux et le durcissement d'un serveur Linux. Chaque projet documenté est accompagné de sa documentation technique en PDF.</p>
   <div class="projects-grid">
 
     <article id="projet-pfsense" class="project-card wide fade-in d1">
@@ -291,6 +291,51 @@
       </div>
     <div class="pc-block"><div class="pc-head"><span class="pc-title">Compétences du bloc 1</span><span class="pc-count">14 couvertes · 1 partielle sur 23</span><a class="pc-link" href="grille-e5.html">Voir la grille E5 →</a></div><div class="pc-grid"><div class="pc-group pc-off"><div class="pc-name">Rendre compte d&#x27;un travail en équipe</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Gérer le patrimoine informatique</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Recenser et identifier les ressources numériques</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Exploiter des référentiels, normes et standards</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Mettre en place et vérifier les niveaux d&#x27;habilitation associés à un service</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Vérifier les conditions de la continuité d&#x27;un service informatique</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Gérer des sauvegardes</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Vérifier le respect des règles d&#x27;utilisation des ressources numériques</li></ul></div><div class="pc-group"><div class="pc-name">Répondre aux incidents et aux demandes d&#x27;assistance et d&#x27;évolution</div><ul><li><span class="g-mark g-part" aria-label="partiel"></span>Collecter, suivre et orienter des demandes</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Traiter des demandes concernant les services réseau et système, applicatifs</li></ul></div><div class="pc-group pc-off"><div class="pc-name">Développer la présence en ligne de l&#x27;organisation</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Travailler en mode projet</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Analyser les objectifs et les modalités d&#x27;organisation d&#x27;un projet</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Planifier les activités</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Évaluer les indicateurs de suivi d&#x27;un projet et analyser les écarts</li></ul></div><div class="pc-group"><div class="pc-name">Mettre à disposition des utilisateurs un service informatique</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Réaliser les tests d&#x27;intégration et d&#x27;acceptation d&#x27;un service</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Déployer un service</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Accompagner les utilisateurs dans la mise en place d&#x27;un service</li></ul></div><div class="pc-group"><div class="pc-name">Organiser son développement professionnel</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Mettre en place son environnement d&#x27;apprentissage personnel</li></ul></div></div></div>
       </article>
+
+    <article id="projet-durcissement" class="project-card wide fade-in d3">
+      <div class="project-num">PROJET 09 — Cybersécurité</div>
+      <div class="project-body-split">
+        <div>
+          <div class="project-icon red">🔐</div>
+          <h2 class="project-title">Durcissement d'un serveur Linux</h2>
+          <p class="project-subtitle">Sécuriser un serveur Debian avant sa mise en production</p>
+          <p class="project-desc">
+            Une PME installe un serveur Debian 13 pour ses services internes. Avant la mise en production, j'ai réduit sa surface d'attaque : compte d'administration dédié, politique de mots de passe, SSH par clé uniquement, pare-feu, fail2ban et mises à jour automatiques. Chaque mesure a été vérifiée depuis un second poste, puis le résultat mesuré avec un audit Lynis.
+          </p>
+          <div class="tags">
+            <span class="tag active">Debian 13</span>
+            <span class="tag active">OpenSSH</span>
+            <span class="tag active">ufw</span>
+            <span class="tag active">fail2ban</span>
+            <span class="tag">PAM</span>
+            <span class="tag">Lynis</span>
+            <span class="tag">VirtualBox</span>
+          </div>
+          <div class="project-docs">
+            <a class="doc-link" href="docs/durcissement-linux-installation.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Documentation d'installation — Durcissement du serveur</span><span class="doc-link-meta">29 pages</span></a>
+            <a class="doc-link" href="docs/durcissement-linux-guide-utilisateur.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Guide d'exploitation — Administrer le serveur durci</span><span class="doc-link-meta">10 pages</span></a>
+          </div>
+        </div>
+        <ul class="project-tasks">
+          <li>Maquette VirtualBox : serveur Debian 13 et poste client sur un réseau isolé, instantané avant durcissement</li>
+          <li>Partitions /home, /var et /tmp séparées, compte root verrouillé</li>
+          <li>Compte d'administration sudo dédié, politique de mots de passe (pam_pwquality)</li>
+          <li>Verrouillage du compte après 5 échecs (pam_faillock)</li>
+          <li>SSH par clé ED25519 uniquement : root et mots de passe refusés, AllowUsers</li>
+          <li>Pare-feu ufw en refus par défaut, seul SSH autorisé</li>
+          <li>fail2ban : bannissement après 3 échecs, testé par une attaque simulée</li>
+          <li>Mises à jour de sécurité automatiques, services inutiles désactivés</li>
+          <li>Audit Lynis (indice 70/100), tests rejoués après redémarrage</li>
+        </ul>
+      </div>
+      <div class="project-shots">
+        <figure><img src="img/durcissement/ssh-tests.webp" alt="Tests SSH depuis le poste client : clé acceptée, mot de passe et root refusés" loading="lazy"><figcaption>SSH : clé acceptée, mot de passe et root refusés</figcaption></figure>
+        <figure><img src="img/durcissement/fail2ban-attaque.webp" alt="Attaque simulée : l'adresse du client est bannie par fail2ban" loading="lazy"><figcaption>fail2ban bannit l'attaquant après 3 échecs</figcaption></figure>
+        <figure><img src="img/durcissement/ufw.webp" alt="Pare-feu ufw : refus par défaut, seul le port 22 ouvert" loading="lazy"><figcaption>ufw : tout est bloqué sauf SSH</figcaption></figure>
+        <figure><img src="img/durcissement/lynis.webp" alt="Audit Lynis : indice de durcissement 70" loading="lazy"><figcaption>Audit Lynis : indice 70/100</figcaption></figure>
+      </div>
+    <div class="pc-block"><div class="pc-head"><span class="pc-title">Compétences du bloc 1</span><span class="pc-count">11 couvertes · 3 partielles sur 23</span><a class="pc-link" href="grille-e5.html">Voir la grille E5 →</a></div><div class="pc-grid"><div class="pc-group pc-off"><div class="pc-name">Rendre compte d&#x27;un travail en équipe</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Gérer le patrimoine informatique</div><ul><li><span class="g-mark g-part" aria-label="partiel"></span>Recenser et identifier les ressources numériques</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Exploiter des référentiels, normes et standards</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Mettre en place et vérifier les niveaux d&#x27;habilitation associés à un service</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Vérifier les conditions de la continuité d&#x27;un service informatique</li><li><span class="g-mark g-part" aria-label="partiel"></span>Gérer des sauvegardes</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Vérifier le respect des règles d&#x27;utilisation des ressources numériques</li></ul></div><div class="pc-group"><div class="pc-name">Répondre aux incidents et aux demandes d&#x27;assistance et d&#x27;évolution</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Traiter des demandes concernant les services réseau et système, applicatifs</li></ul></div><div class="pc-group pc-off"><div class="pc-name">Développer la présence en ligne de l&#x27;organisation</div><span class="pc-none">Non mobilisée dans ce projet</span></div><div class="pc-group"><div class="pc-name">Travailler en mode projet</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Analyser les objectifs et les modalités d&#x27;organisation d&#x27;un projet</li><li><span class="g-mark g-part" aria-label="partiel"></span>Planifier les activités</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Évaluer les indicateurs de suivi d&#x27;un projet et analyser les écarts</li></ul></div><div class="pc-group"><div class="pc-name">Mettre à disposition des utilisateurs un service informatique</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Réaliser les tests d&#x27;intégration et d&#x27;acceptation d&#x27;un service</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Déployer un service</li><li><span class="g-mark g-full" aria-label="couvert">✓</span>Accompagner les utilisateurs dans la mise en place d&#x27;un service</li></ul></div><div class="pc-group"><div class="pc-name">Organiser son développement professionnel</div><ul><li><span class="g-mark g-full" aria-label="couvert">✓</span>Mettre en place son environnement d&#x27;apprentissage personnel</li></ul></div></div></div>
+    </article>
   </div>
 
   <div class="docs-library fade-in d3">
@@ -306,6 +351,8 @@
       <a class="doc-link" href="docs/cle-usb-bootable.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Clé USB bootable multiboot</span><span class="doc-link-meta">Bloc 1 · Ventoy · chntpw · 5 pages</span></a>
       <a class="doc-link" href="docs/monitoring-kali-installation.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Sonde de supervision sous Kali Linux</span><span class="doc-link-meta">Bloc 2 · Suricata · Prometheus · Grafana · 24 pages</span></a>
       <a class="doc-link" href="docs/monitoring-kali-guide-utilisateur.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Guide utilisateur de la sonde</span><span class="doc-link-meta">Bloc 1 · Alertes et analyse de trafic · 13 pages</span></a>
+      <a class="doc-link" href="docs/durcissement-linux-installation.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Durcissement d'un serveur Linux</span><span class="doc-link-meta">Bloc 2 · Debian 13 · SSH · ufw · fail2ban · 29 pages</span></a>
+      <a class="doc-link" href="docs/durcissement-linux-guide-utilisateur.pdf" target="_blank" rel="noopener"><span class="doc-link-type">PDF</span><span class="doc-link-name">Guide d'exploitation du serveur durci</span><span class="doc-link-meta">Bloc 1 · Administrateurs · 10 pages</span></a>
     </div>
   </div>
 

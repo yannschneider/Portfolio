@@ -702,3 +702,9 @@ section {
 .pc-off .pc-name { color: var(--muted); margin-bottom: 0.2rem; }
 .pc-none { font-size: 0.65rem; color: rgba(133,147,168,0.7); }
 .project-icon.violet { background: linear-gradient(135deg, #7c3aed, #c026d3); }
+/* Projet durcissement : icône et galerie de captures */
+.project-icon.red { background: linear-gradient(135deg, #ef4444, #b91c1c); }
+.project-shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.9rem; margin-top: 1.5rem; }
+.project-shots figure { margin: 0; background: #000; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; overflow: hidden; }
+.project-shots img { display: block; width: 100%; height: 150px; object-fit: cover; object-position: left top; }
+.project-shots figcaption { font-family: 'Space Mono', monospace; font-size: 0.72rem; color: #9fb3c8; padding: 0.5rem 0.7rem; background: rgba(255,255,255,0.03); }
